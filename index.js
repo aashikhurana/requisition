@@ -12,10 +12,10 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.get('/place-order', function(req, res) {
-    var speech = "Your Requisition is created with id 123451234 and purchase id is 1234"
+    var user_speech = "Your Requisition is created with id 123451234 and purchase id is 1234"
     return res.json{
-                speech:speech,
-                displayText:speech,
+                speech:user_speech,
+                displayText:user_speech,
                 data:{
                     google:{
                         expect_user_response: false,
@@ -33,6 +33,4 @@ restService.get('/place-order', function(req, res) {
 
 
 
-restService.listen((process.env.PORT || 8000), function() {
-    console.log("Server up and listening");
-});
+
