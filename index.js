@@ -11,7 +11,7 @@ restService.use(bodyParser.urlencoded({
 
 restService.use(bodyParser.json());
 
-restService.post('/echo', function(req, res) {
+restService.get('/echo', function(req, res) {
     var speech = "Your Requisition is created with id 123451234 and purchase id 1234"
     return res.json({
         speech: speech,
