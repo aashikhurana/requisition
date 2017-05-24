@@ -32,5 +32,9 @@ restService.get('/place-order', function(req, res) {
 });
 
 
+restService.listen((process.env.PORT || 5000), function() {
+    console.log("Server up and listening");
+});
+
 
 
