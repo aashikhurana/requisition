@@ -12,7 +12,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-    var user_request=JSON.stringify(req.result);
+    var user_request=JSON.stringify(req);
 	//if(req.result.action == 'ask'){
 	var speech ="Your Requisition Bot Code is 12341234 and purchase Id is 12341234";
 	console.log("user request is of format:"+user_request);
