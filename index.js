@@ -1,4 +1,4 @@
-use strict';
+'use strict';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -12,13 +12,14 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-    var speech ="Seems like some problem. Speak again.";
+    var speech ="Your Requisition Bot Code is 12341234 and purchase Id is 12341234";
     return res.json({
         speech: speech,
         displayText: speech,
-        source: 'requisitionbot'
+        source: 'webhook-echo-sample'
     });
 });
+
 
 
 
@@ -27,6 +28,3 @@ restService.post('/echo', function(req, res) {
 restService.listen((process.env.PORT || 8000), function() {
     console.log("Server up and listening");
 });
-
-
-

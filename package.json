@@ -1,12 +1,12 @@
 {
-  "name": "requisitionbot",
+  "name": "webhook-echo-sample",
   "version": "1.0.0",
-  "description": "requisitionbot",
+  "description": "Webhook echo sample",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "aashima Khurana",
+  "author": "Sunil Syal",
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4"
