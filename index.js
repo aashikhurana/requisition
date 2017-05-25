@@ -13,7 +13,7 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
     var speech ="Your Requisition Bot Code is 12341234 and purchase Id is 12341234";
-	var user_request=JSON.stringify(req);
+	var user_request=JSON.stringify(req.body.query);
 	console.log("user rrequest is of format:"+user_request);
     return res.json({
         speech: speech,
