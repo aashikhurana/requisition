@@ -162,7 +162,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
     speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
 	console.log("user request is of format:"+user_request);
 	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
-	}
     return res.json({
         speech: speech,
         displayText: speech,
