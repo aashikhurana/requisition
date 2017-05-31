@@ -16,7 +16,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Inside Web service call");
 	
 	var speech="There is an error in the bot service";
-	
+	console.log(JSON.stringify(req.body.result));
     var user_request=req.body.result.action;
 	var user_response=req.body.result.yes_no;
 	var order_item=req.body.result.parameters.order_items;
@@ -36,9 +36,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	if(user_request == 'place_order'){
 		
+		console.log("user requested"+user_request);
 		
-		
-	if(order_item='pen'){
+	if(order_item=='pen'){
 		console.log("Inside pen")
 		
 		    category_name= "Pens and Pencils";
@@ -60,9 +60,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
             }
 				
 		
-	}
-	
-	if(order_item=='Stapler'){
+	}else if(order_item=='Stapler'){
 		
 	console.log("Inside Stapler");
 	
@@ -75,9 +73,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
      supplier_site_name= "OD US1";
      price="29.95";
 		
-	}
-	
-	if(order_item=='Organizer'){
+	}else if(order_item=='Organizer'){
 		
 	 item_description="Catch All Organizer, Black";
      category_name= "Desk Supplies";
@@ -88,9 +84,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
      supplier_site_name= "OD US1";
      price="8.99";
 		
-	}
-	
-	if(order_item='Binder Books'){
+	}else if(order_item=='Binder Books'){
 		
 		console.log("Inside Binder Books");
 		
@@ -103,9 +97,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
      supplier_site_name= "OD US1";
      price="6.45";
 		
-	}
-	
-	if(order_item='Laminating sheet'){
+	}else if(order_item=='Laminating sheet'){
 		
 		console.log("InsideLaminating sheets");
 		
@@ -117,9 +109,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
      supplier_name= "Office Depot";
      supplier_site_name= "OD US1";
      price="21.99";
-	}
-	
-	if(order_item='Planning System'){
+	}else if(order_item=='Planning System'){
 		
 		console.log("Inside Planning system");
 		
@@ -131,9 +121,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
      supplier_name= "Staples";
      supplier_site_name= "Staples US1";
      price="65.99";
-	}
-	
-	if(order_item='Paper'){
+	}else if(order_item=='Paper'){
 	
 	  console.log("Inside Paper");
 	  item_description="Photocopy Paper Letter Light Blue";
@@ -159,17 +147,18 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "Price": price
         }
       }
+	  speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
+       return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
+});
 	  
     }
     
 	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
     
-speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
-return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-});
+
 
 });
 
