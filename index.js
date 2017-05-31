@@ -38,7 +38,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 		
 		console.log("user requested"+user_request);
 		
-	if(order_item=='pen'){
+	if(order_item=='PEN'){
 		console.log("Inside pen")
 		
 		    category_name= "Pens and Pencils";
@@ -147,6 +147,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "Price": price
         }
       }
+	  console.log("Request Payload is: "+request_payload);
 	  speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
        return res.json({
         speech: speech,
