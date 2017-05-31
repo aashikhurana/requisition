@@ -36,16 +36,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	if(user_request == 'place_order'){
 		
-		console.log("user response is"+user_response)
 		
-		if(user_response=='Yes' || user_response=='yes'){
-			speech="What would you like to order?";
-			return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-    });
-		}
 		
 	if(order_item='pen'){
 		console.log("Inside pen")
@@ -67,10 +58,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 			item_description="Round Stic Ball Point Pen, Fine, Blue";
             supplier_item_number="BIC20130";
             }
-			
-			speech="Where would you like to get it delivered?";
-		
-		
+				
 		
 	}
 	
@@ -158,9 +146,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
      price="7.99";
 	}
 	
-	if(address!=undefined){
-		speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
-	}
 	
 	var request_payload={
   "OrderDetails": {
@@ -175,20 +160,18 @@ restService.post('/echo', json_body_parser, function(req, res) {
         }
       }
 	  
-	  console.log("user request is of format:"+user_request);
-	  return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-    });
     }
     
 	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
     
+speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
+return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
 });
 
-
-
+});
 
 
 
