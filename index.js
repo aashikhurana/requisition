@@ -147,7 +147,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	
 	var request_payload={
-  "createRequisition": {
+  "OrderDetails": {
         "CategoryName": category_name,
         "ItemDescription": item_description,
         "SourceAgreementNumber": source_agreement_number,
@@ -155,9 +155,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "SupplierContactName": supplier_contact_name,
         "SupplierName": supplier_name,
         "SupplierSiteName": supplier_site_name,
-        "Price": {
-          "currencyCode": "USD",
-          "#text": price
+        "Price": price
         }
       }
     }
