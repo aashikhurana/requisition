@@ -18,6 +18,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var speech="There is an error in the bot service";
 	
     var user_request=req.body.result.action;
+	var user_response=req.body.result.yes_no;
 	var order_item=req.body.result.parameters.order_items;
 	var order_item_1=req.body.result.parameters.order_items1;
 	var address=req.body.result.parameters.address;
@@ -33,9 +34,10 @@ restService.post('/echo', json_body_parser, function(req, res) {
     var price=" ";
 	
 	
-	
-	
 	if(user_request == 'place_order'){
+		if(user_response=='Yes' || user_response=='yes'){
+			speech="What would you like to order?";
+		}
 		
 	if(order_item='pen'){
 		console.log("Inside pen")
@@ -57,6 +59,8 @@ restService.post('/echo', json_body_parser, function(req, res) {
 			item_description="Round Stic Ball Point Pen, Fine, Blue";
             supplier_item_number="BIC20130";
             }
+			
+			speech="Where would you like to get it delivered?";
 		
 		
 		
@@ -146,6 +150,10 @@ restService.post('/echo', json_body_parser, function(req, res) {
      price="7.99";
 	}
 	
+	if(address!=undefined){
+		speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
+	}
+	
 	var request_payload={
   "OrderDetails": {
         "CategoryName": category_name,
@@ -158,7 +166,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "Price": price
         }
       }
-	  speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
+	  
 	  console.log("user request is of format:"+user_request);
 	  return res.json({
         speech: speech,
