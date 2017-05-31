@@ -17,9 +17,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	var speech="There is an error in the bot service";
 	
-    var user_request=JSON.stringify(req.body.result.action);
-	var order_item=JSON.stringify(req.body.result.parameters.order_items);
-	var order_item_1=JSON.stringify(req.body.result.parameters.order_items1);
+    var user_request=req.body.result.action;
+	var order_item=req.body.result.parameters.order_items;
+	var order_item_1=req.body.result.parameters.order_items1;
 	var address=req.body.result.parameters.address;
 	var order_color=req.body.result.parameters.color;
 	
@@ -35,7 +35,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	
 	
-	if(req.body.result.action == 'place-order'){
+	if(user_request == 'place_order'){
 		
 	if(order_item='pen'){
 		console.log("Inside pen")
@@ -158,15 +158,17 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "Price": price
         }
       }
-    }
-    speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
-	console.log("user request is of format:"+user_request);
-	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
-    return res.json({
+	  speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
+	  console.log("user request is of format:"+user_request);
+	  return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
     });
+    }
+    
+	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
+    
 });
 
 
