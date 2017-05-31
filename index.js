@@ -35,8 +35,16 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	
 	if(user_request == 'place_order'){
+		
+		console.log("user response is"+user_response)
+		
 		if(user_response=='Yes' || user_response=='yes'){
 			speech="What would you like to order?";
+			return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
+    });
 		}
 		
 	if(order_item='pen'){
