@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 var restService = express();
 var http = require('http');
-var request = require('request');
+var request_1 = require('request');
 
 var qs = require('querystring');
 
@@ -157,11 +157,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "SupplierSiteName": supplier_site_name,
         "Price": price
         };
+		
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
 	  
 	  var url_1= "http://10.178.22.222:7101/requisition-context-root/resources/procws/requisitionBot?order="+qs.stringify(request_payload);
    
-   request.post({
+   request_1.post({
     url: url_1,
     headers: {
         "Content-Type": "application/json"
