@@ -13,10 +13,12 @@ var http = require('http');
 //restService.use(bodyParser.json());
 var json_body_parser = bodyParser.json();
 
+var speech="There is an error in the bot service";
+
 restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Inside Web service call");
 	
-	var speech="There is an error in the bot service";
+	
 	console.log(JSON.stringify(req.body.result));
     var user_request=req.body.result.action;
 	var user_response=req.body.result.yes_no;
@@ -161,7 +163,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
 var optionspost = {
     host : '10.178.22.222',
     port : 7101,
-	'/requisition-context-root/'+ username +'/repos'
     path : '/requisition-context-root/'+'/resources/'+'/procws/'+'/requisitionBot?order='+JSON.stringify(request_payload),
     method : 'POST',
     headers : postheaders
@@ -196,13 +197,14 @@ reqPost.on('error', function(e) {
 });
 speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as "+requisition_id;
 	
-	 return res.json({
+	 
+	  
+    }
+	return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
-	  
-    }
 	
 });
 
