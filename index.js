@@ -158,8 +158,34 @@ restService.post('/echo', json_body_parser, function(req, res) {
         };
 		
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
+	  
+   var optionspost = {
+    host : '10.178.22.222:7101',
+    port : 7101,
+    path : '/requisition-context-root/resources/procws/requisitionBot?order='+JSON.stringify(request_payload),
+    method : 'POST',
+    headers : postheaders
+};
+
+console.info('Options prepared:');
+console.info(optionspost);
+console.info('Do the POST call');
+
+// do the POST call
+var reqPost = https.request(optionspost, function(res) {
+    console.log("statusCode: ", res.statusCode);
+    // uncomment it for header details
+//  console.log("headers: ", res.headers);
+if(res.statusCode==200){
+    res.on('data', function(d) {
+        console.info('POST result:\n');
+        process.stdout.write(d);
+        console.info('\n\nPOST completed');
+    });
+}
+});
 	 
- speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as "+requisition_id;
+ speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as 1234";
 }
 	return res.json({
         speech: speech,
