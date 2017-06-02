@@ -160,9 +160,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
 	  
    var optionspost = {
-    host : '10.178.22.222:7101',
+    host : '10.178.22.222',
     port : 7101,
-    path : '/requisition-context-root/resources/procws/requisitionBot?order='+qs.stringify(request_payload),
+    path : '/requisition-context-root/resources/procws/requisitionBot?order='+JSON.stringify(request_payload),
     method : 'POST',
     headers : postheaders
 };
@@ -180,12 +180,13 @@ if(res.statusCode==200){
     res.on('data', function(d) {
         console.info('POST result:\n');
         process.stdout.write(d);
+		requisition_id=d.REQUISITIONID;
         console.info('\n\nPOST completed');
     });
 }
 });
 	 
- speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as 1234";
+ speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with Requisition ID as"+requisition_id;
 }
 	return res.json({
         speech: speech,
