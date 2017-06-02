@@ -153,7 +153,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "SupplierName": supplier_name,
         "SupplierSiteName": supplier_site_name,
         "Price": price
-        };
+        }
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
 	  
       
@@ -163,7 +163,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 var optionspost = {
     host : '10.178.22.222',
     port : 7101,
-    path : '\/requisition-context-root'+'\/resources'+'\/procws'+'\/requisitionBot?order='+JSON.stringify(request_payload),
+    path : '/requisition-context-root/resources/procws/requisitionBot?order='+JSON.stringify(request_payload),
     method : 'POST',
     headers : postheaders
 };
