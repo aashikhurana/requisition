@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 
 var restService = express();
 var http = require('http');
-var request_1 = require('request');
 
 var qs = require('querystring');
 
@@ -39,7 +38,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
     var supplier_site_name= "OD";
     var price=" ";
 	
-	var requisition_id="0000";
+	var requisition_id=" ";
 	
 	var postheaders = {
     'Content-Type' : 'application/json'
@@ -159,43 +158,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         };
 		
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
-	  
-	  
-var options ={
-  host: "10.178.22.222",
-  port: 7101,
-  path: '/requisition-context-root/resources/procws/requisitionBot?order='+qs.stringify(request_payload),
-  method: 'POST',
-  headers : postheaders
-};
-
-console.log('Options prepared:');
-console.log(options);
-console.log('Do the POST call');
- 
-// do the POST call
-var reqPost = http.request(options, function(res) {
-    console.log("statusCode: ", res.statusCode);
-	if(res.statusCode==200){
-	console.log("headers: ", res.headers);
-	res.on('data', function(d) {
-        console.info('POST result:\n');
-        console.log("Requisition ID:  "+d.REQUISITIONID);
-		requisition_id=d.REQUISITIONID;
-        console.info('\n\nPOST completed');
-    });
-	
-	}
-    // uncomment it for header details
-//  
- });
- 
-// write the json data
-//reqPost.write(jsonObject);
-reqPost.end();
-reqPost.on('error', function(e) {
-    console.error(e);
-});
+	 
  speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as "+requisition_id;
 }
 	return res.json({
