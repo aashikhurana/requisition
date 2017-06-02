@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var restService = express();
+var http = require('http');
 
 //restService.use(bodyParser.urlencoded({
     //extended: true
@@ -21,7 +22,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var user_response=req.body.result.yes_no;
 	var order_item=req.body.result.parameters.order_items;
 	var order_item_1=req.body.result.parameters.order_items1;
-	var address=req.body.result.parameters.address;
+	var address=req.body.result.parameters.order-address;
 	var order_color=req.body.result.parameters.color;
 	
 	var item_description="blank";
@@ -32,6 +33,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
     var supplier_name= "OD";
     var supplier_site_name= "OD";
     var price=" ";
+	
+	var requisition_id="0000"
+	
+	var postheaders = {
+    'Content-Type' : 'application/json',
+};
 	
 	
 	if(user_request == 'place_order'){
@@ -136,7 +143,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	
 	var request_payload={
-  "OrderDetails": {
         "CategoryName": category_name,
         "ItemDescription": item_description,
         "SourceAgreementNumber": source_agreement_number,
@@ -146,21 +152,57 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "SupplierSiteName": supplier_site_name,
         "Price": price
         }
-      }
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
-	  speech="Your order for "+order_item+" has been raised. Your Requisition Id is 1234";
-       return res.json({
+	  
+      
+
+//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
+    // the post options
+var optionspost = {
+    host : '10.178.22.222',
+    port : 7101,
+    path : '/requisition-context-root/resources/procws/requisitionBot?order='+JSON.stringify(request_payload),
+    method : 'POST',
+    headers : postheaders
+};
+ 
+console.log('Options prepared:');
+console.log(optionspost);
+console.log('Do the POST call');
+ 
+// do the POST call
+var reqPost = http.request(optionspost, function(res) {
+    console.log("statusCode: ", res.statusCode);
+	if(res.statusCode==200){
+	console.log("headers: ", res.headers);
+	res.on('data', function(d) {
+        console.info('POST result:\n');
+        console.log("Requisition ID:  "+d.REQUISITIONID);
+		requisition_id=d.REQUISITIONID;
+        console.info('\n\nPOST completed');
+    });
+	
+	}
+    // uncomment it for header details
+//  
+ });
+ 
+// write the json data
+//reqPost.write(jsonObject);
+reqPost.end();
+reqPost.on('error', function(e) {
+    console.error(e);
+});
+speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as "+requisition_id;
+	
+	 return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
 	  
     }
-    
-	//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
-    
-
-
+	
 });
 
 
