@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 
 var restService = express();
 var http = require('http');
+var request = require('request');
+
+var qs = require('querystring');
 
 //restService.use(bodyParser.urlencoded({
     //extended: true
@@ -156,45 +159,27 @@ restService.post('/echo', json_body_parser, function(req, res) {
         }
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
 	  
-      
-
-//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
-    // the post options
-var optionspost = {
-    host : '10.178.22.222',
-    port : 7101,
-    path : '/requisition-context-root/resources/procws/requisitionBot?order='+JSON.stringify(request_payload),
-    method : 'POST',
-    headers : postheaders
-};
- 
-console.log('Options prepared:');
-console.log(optionspost);
-console.log('Do the POST call');
- 
-// do the POST call
-var reqPost = http.request(optionspost, function(res) {
-    console.log("statusCode: ", res.statusCode);
-	if(res.statusCode==200){
-	console.log("headers: ", res.headers);
-	res.on('data', function(d) {
-        console.info('POST result:\n');
-        console.log("Requisition ID:  "+d.REQUISITIONID);
-		requisition_id=d.REQUISITIONID;
-        console.info('\n\nPOST completed');
-    });
-	
+	  var url_1= "http://10.178.22.222:7101/requisition-context-root/resources/procws/requisitionBot?order="+qs.stringify(request_payload),
+   
+   request.post({
+    url: url_1,
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: { },
+    json: true
+}, function (error, response, body) {
+	console.log("statusCode: ", response.statusCode);
+	if(response.statusCode==200){
+    console.log(error);
+    console.log(JSON.stringify(response));
+    console.log(body);
 	}
-    // uncomment it for header details
-//  
- });
- 
-// write the json data
-//reqPost.write(jsonObject);
-reqPost.end();
-reqPost.on('error', function(e) {
-    console.error(e);
 });
+//console.log("parameters are: "+ JSON.stringify(order_item) +" "+JSON.stringify(address));
+    // the post option
+ 
+
 speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with ID as "+requisition_id;
 	
 	 
