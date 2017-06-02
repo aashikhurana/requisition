@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var restService = express();
-var http = require('http');
+var https = require('https');
 
 var qs = require('querystring');
 
