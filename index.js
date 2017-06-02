@@ -42,7 +42,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var requisition_id="0000";
 	
 	var postheaders = {
-    'Content-Type' : 'application/json',
+    'Content-Type' : 'application/json'
 };
 	
 	
@@ -159,10 +159,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
         };
 		
 	  console.log("Request Payload is: "+JSON.stringify(request_payload));
-	  
-	  var postheaders = {
-    'Content-Type' : 'application/json'
-};
 	  
 	  
 var options ={
