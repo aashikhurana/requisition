@@ -193,6 +193,6 @@ if(res.statusCode==200){
 
 
 
-restService.listen((process.env.PORT || 5000), function() {
+restService.listen((process.env.PORT || 3000), function() {
     console.log("Server up and listening");
 });
