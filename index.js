@@ -182,6 +182,8 @@ if(res.statusCode==200){
 		requisition_id=d.REQUISITIONID;
         console.info('\n\nPOST completed');
     });
+}else{
+	speech="Thank you for using Oracle Requisition Bot. Please try again later";
 }
 });
 	 
