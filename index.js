@@ -175,10 +175,13 @@ if(res.statusCode==200){
 		requisition_id=d.REQUISITIONID;
         console.info('\n\nPOST completed');
     });
+	speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with Requisition ID as"+requisition_id;
+}else{
+	speech
 }
 });
 	 
- speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with Requisition ID as"+requisition_id;
+ 
 }
 	return res.json({
         speech: speech,
@@ -190,6 +193,6 @@ if(res.statusCode==200){
 
 
 
-restService.listen((process.env.PORT || 8000), function() {
+restService.listen((process.env.PORT || 5000), function() {
     console.log("Server up and listening");
 });
