@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var restService = express();
-var https = require('https');
+var http = require('http');
 
 var qs = require('querystring');
 
@@ -154,7 +154,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
    var optionspost = {
     host : '10.178.23.13',
     port : 7101,
-    path : '/requisition-context-root/resources/procws/requisitionBot?'+qs.stringify(request_payload),
+    path : '/requisition-context-root/resources/procws/requisitionBot?'+request_payload,
     method : 'POST',
     headers : postheaders
 };
@@ -164,7 +164,7 @@ console.info(optionspost);
 console.info('Do the POST call');
 
 // do the POST call
-var reqPost = https.request(optionspost, function(res) {
+var reqPost = http.request(optionspost, function(res) {
     console.log("statusCode: ", res.statusCode);
     // uncomment it for header details
 //  console.log("headers: ", res.headers);
