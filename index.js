@@ -162,7 +162,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	  console.log("Request Payload is: "+request_payload);
 	  
    var optionspost = {
-    host : '10.191.212.55',
+    host : '10.191.196.213',
     port : 7101,
     path : '/requisition-context-root/resources/procws/requisitionBot?'+qs.stringify(request_payload),
     method : 'POST',
