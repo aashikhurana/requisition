@@ -174,25 +174,23 @@ console.info(optionspost);
 console.info('Do the POST call');
 
 // do the POST call
-var requestPost = http.request(optionspost, function(res) {
-    console.log("statusCode: "+res);
-    // uncomment it for header details
-//  console.log("headers: ", res.headers);
-if(res.statusCode==200){
-    res.on('data', function(d) {
-        console.info('POST result:\n');
-		requisition_id=d.REQUISITIONID;
-        console.info('\n\nPOST completed');
-    });
-	speech="Thank you for using Requisition Bot!Your request for "+order_item+" has been raised with Requisition ID as"+requisition_id;
-}
+var req = http.request(optionspost, function(res) {
+   console.log('Status: ' + res.statusCode);
+  console.log('Headers: ' + JSON.stringify(res.headers));
+  res.setEncoding('utf8');
+  res.on('data', function (body) {
+    console.log('Body: ' + body);
+  });
+  speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
 
 });
-requestPost.on('error', function(err) {
-    // Handle error
-	console.log("error is:"+err);
-	speech="Bot service throws exception";
+req.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
 });
+// write data to request body
+//req.write('{"string": "Hello, World"}');
+req.end();
+
 requestPost.end();
 }
 	return res.json({
