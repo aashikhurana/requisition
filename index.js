@@ -191,7 +191,6 @@ req.on('error', function(e) {
 //req.write('{"string": "Hello, World"}');
 req.end();
 
-requestPost.end();
 }
 	return res.json({
         speech: speech,
