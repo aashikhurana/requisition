@@ -174,8 +174,8 @@ console.info(optionspost);
 console.info('Do the POST call');
 
 // do the POST call
-var reqPost = http.post(optionspost, function(res) {
-    console.log("statusCode: ", res.statusCode);
+var reqPost = http.request(optionspost, function(res) {
+    console.log("statusCode: "+ res.statusCode);
     // uncomment it for header details
 //  console.log("headers: ", res.headers);
 if(res.statusCode==200){
