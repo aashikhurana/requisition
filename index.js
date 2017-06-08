@@ -15,7 +15,7 @@ var qs = require('querystring');
 //restService.use(bodyParser.json());
 var json_body_parser = bodyParser.json();
 
-var speech="There is an error in the bot service";
+
 
 restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Inside Web service call");
@@ -177,26 +177,41 @@ console.info('Do the POST call');
 var req = http.request(optionspost, function(res) {
    console.log('Status: ' + res.statusCode);
   console.log('Headers: ' + JSON.stringify(res.headers));
-  res.setEncoding('utf8');
+  //res.setEncoding('utf8');
   res.on('data', function (body) {
     console.log('Body: ' + body);
   });
-  speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
-
-});
-req.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
-});
-// write data to request body
-//req.write('{"string": "Hello, World"}');
-req.end();
-
-}
-	return res.json({
+  var speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
+  
+ return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
+});
+req.on('socket', function (socket) {
+    socket.setTimeout(600000);  
+    socket.on('timeout', function() {
+        req.abort();
+    });
+}
+req.on('error', function(e) {
+	if(err.code === "ETIMEDOUT"){
+  console.log('problem with request: ' + e.message);
+	}
+	var speech="There is an error in the bot service";
+	       return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
+});
+});
+// write data to request body
+req.write('{"string": "Hello, World"}');
+req.end();
+
+}
+	
 	
 });
 
