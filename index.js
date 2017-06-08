@@ -196,7 +196,7 @@ req.on('socket', function (socket) {
     });
 }
 req.on('error', function(e) {
-	if(err.code === "ETIMEDOUT"){
+	if(e.code === "ETIMEDOUT"){
   console.log('problem with request: ' + e.message);
 	}
 	var speech="There is an error in the bot service";
