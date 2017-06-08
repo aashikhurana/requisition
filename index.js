@@ -158,9 +158,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
         "Price": price
         };
 	
-        
-		
-	  console.log("Request Payload is: "+request_payload);
+        console.log("Request Payload is: "+request_payload);
 	  
    var optionspost = {
     host : '10.178.23.13',
@@ -189,9 +187,8 @@ req.on('socket', function (socket) {
     socket.on('timeout', function() {
         req.abort();
     });
-}
+});
 req.on('error', function(e) {
-	
   console.log('problem with request: ' + e.message);
   speech="There is an error in the bot service";
 });
