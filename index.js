@@ -182,13 +182,7 @@ var req = http.request(optionspost, function(res) {
     console.log('Body: ' + body);
   });
   var speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
-  
- return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-});
-});
+  });
 req.on('socket', function (socket) {
     socket.setTimeout(600000);  
     socket.on('timeout', function() {
@@ -200,15 +194,15 @@ req.on('error', function(e) {
   console.log('problem with request: ' + e.message);
 	}
 	var speech="There is an error in the bot service";
-	       return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-});
 });
 // write data to request body
 req.write('{"string": "Hello, World"}');
 req.end();
+ return res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-echo-sample'
+});
 
 }
 	
