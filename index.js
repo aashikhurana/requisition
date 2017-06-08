@@ -37,6 +37,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
     var supplier_name= "OD";
     var supplier_site_name= "OD";
     var price=" ";
+	var speech="";
 	
 	var requisition_id=" ";
 	
@@ -181,7 +182,7 @@ var req = http.request(optionspost, function(res) {
   res.on('data', function (body) {
     console.log('Body: ' + body);
   });
-  var speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
+  speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
   });
 req.on('socket', function (socket) {
     socket.setTimeout(600000);  
@@ -190,10 +191,9 @@ req.on('socket', function (socket) {
     });
 }
 req.on('error', function(e) {
-	if(e.code === "ETIMEDOUT"){
+	
   console.log('problem with request: ' + e.message);
-	}
-	var speech="There is an error in the bot service";
+  speech="There is an error in the bot service";
 });
 // write data to request body
 req.write('{"string": "Hello, World"}');
