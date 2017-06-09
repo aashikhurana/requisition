@@ -8,6 +8,11 @@ var http = require('http');
 
 var qs = require('querystring');
 
+var soap=require('soap');
+
+var parsestring=require('xml2js').parseString;
+var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseRequest/PurchaseRequestService?WSDL';
+
 //restService.use(bodyParser.urlencoded({
     //extended: true
 //}));
@@ -41,9 +46,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	var requisition_id=" ";
 	
-	var postheaders = {
-    'Content-Type' : 'application/json'
-};
 	
 	
 	if(user_request == 'place_order'){
@@ -146,68 +148,85 @@ restService.post('/echo', json_body_parser, function(req, res) {
      price="7.99";
 	}
 	
+	var  OrderRequestElement =   {
+	"createRequisition": {
+        "interfaceSourceCode": "UK_F2F_Bot",
+        "requisitioningBUName": "US1 Business Unit",
+        "groupBy": "NONE",
+        "maximumBatchSize": "2500",
+        "errorProcessingLevel": "ALL",
+        "purchaseRequestPayload": {
+          "Description": "Ladder with Right Handrail",
+          "ApproverEmail": "fap1966-casey.brown@oracleads.com",
+          "DocumentStatusCode": "APPROVED",
+          "PreparerEmail": "fap1966-calvin.roth@oracleads.com",
+          "RequisitioningBUName": "US1 Business Unit",
+          "ExternallyManagedFlag": "FALSE",
+          "PurchaseRequestInputReqLineInterface": {
+            "CategoryName": category_name,
+            "CurrencyCode": "USD",
+            "DeliverToLocationCode": "Seattle",
+            "DeliverToOrganizationCode": "001",
+            "DestinationTypeCode": "EXPENSE",
+            "ItemDescription": item_description,
+            "LineType": "Goods",
+            "ProcurementBUName": "US1 Business Unit",
+            "Quantity": "1",
+            "SourceAgreementNumber": source_agreement_number,
+            "SupplierItemNumber": supplier_item_number,
+            "SupplierContactName": supplier_contact_name,
+            "SupplierName": supplier_name,
+            "SupplierSiteName": supplier_site_name,
+            "RequestedDeliveryDate": "2017-06-02",
+            "Price": {
+              "-currencyCode": "USD",
+              "#text": price
+            },
+            "UnitOfMeasure": "Ea",
+            "PurchaseRequestInputReqDistInterface": {
+              "ChargeAccountId": "300000047301445",
+              "Percent": "100"
+            }
+          }
+        }
+      }
+	}
 	
-	var request_payload={
-        "CategoryName": category_name,
-        "ItemDescription": item_description,
-        "SourceAgreementNumber": source_agreement_number,
-        "SupplierItemNumber": supplier_item_number,
-        "SupplierContactName": supplier_contact_name,
-        "SupplierName": supplier_name,
-        "SupplierSiteName": supplier_site_name,
-        "Price": price
-        };
-	
-        console.log("Request Payload is: "+request_payload);
+  console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
-   var optionspost = {
-    host : '10.178.23.13',
-    port : 7101,
-    path : '/requisition-context-root/resources/procws/requisitionBot?'+qs.stringify(request_payload),
-    method : 'POST',
-    headers : postheaders
-};
+ 
+console.info('Do the SOAP call');
 
-console.info('Options prepared:');
-console.info(optionspost);
-console.info('Do the POST call');
+soap.createClient(url, function(err, client){
+   
+   
+   console.log("Setting security");
+   client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
+  // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
+  console.log('Calling Webservice');
+  client.createRequisition(OrderRequestElement, function(err, result, body) {
+   parseString(body, function(err, result){
+    // Get The Result From The Soap API and Parse it to JSON
+    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
+    console.log(requestResult);
+	speech="Your request for"+order_item+"has been raised. Thank you for using Requisition Bot. Have a nice day!";
+  });
+ 
+});
+client.on('soapError', function(err) {
+    console.log("Error is caused due to"+err.message);
+	speech="There is an error in bot service";
+  });
 
-// do the POST call
-var req = http.request(optionspost, function(res) {
-   console.log('Status: ' + res.statusCode);
-  console.log('Headers: ' + JSON.stringify(res.headers));
-  //res.setEncoding('utf8');
-  res.on('data', function (body) {
-    console.log('Body: ' + body);
-  });
-  speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
-  });
-req.on('socket', function (socket) {
-    socket.setTimeout(600000);  
-    socket.on('timeout', function() {
-        req.abort();
-    });
 });
-req.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
-  speech="There is an error in the bot service";
-});
-// write data to request body
-req.write('{"string": "Hello, World"}');
-req.end();
- return res.json({
+
+
+}
+return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
-
-}
+});
 	
 	
-});
-
-
-
-restService.listen((process.env.PORT || 5000), function() {
-    console.log("Server up and listening");
-});
