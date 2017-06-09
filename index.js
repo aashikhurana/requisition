@@ -8,7 +8,7 @@ var http = require('http');
 
 var qs = require('querystring');
 
-var soap=require('soap');
+var soap=require('strong-soap');
 
 var parsestring=require('xml2js').parseString;
 //restService.use(bodyParser.urlencoded({
