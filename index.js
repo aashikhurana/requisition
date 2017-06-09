@@ -198,7 +198,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
  
 console.info('Do the SOAP call');
 
-soap.createClient(url, function(err, client){
+soap.createclient(url, function(err, client){
 	
 	if(!err){
 		console.log("Setting security");
