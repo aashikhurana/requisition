@@ -190,7 +190,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
           }
         }
       }
-	}
+	};
 	
   console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
@@ -227,6 +227,11 @@ return res.json({
         displayText: speech,
         source: 'webhook-echo-sample'
 });
+});
+
+
+restService.listen((process.env.PORT || 5000), function() {
+    console.log("Server up and listening");
 });
 	
 	
