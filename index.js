@@ -11,8 +11,6 @@ var qs = require('querystring');
 var soap=require('soap');
 
 var parsestring=require('xml2js').parseString;
-var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseRequest/PurchaseRequestService?WSDL';
-
 //restService.use(bodyParser.urlencoded({
     //extended: true
 //}));
@@ -45,6 +43,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var speech="";
 	
 	var requisition_id=" ";
+	
+var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseRequest/PurchaseRequestService?WSDL';
+
 	
 	
 	
@@ -219,18 +220,18 @@ client.on('soapError', function(err) {
   });
 
 });
-
-
-}
 return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
+
+}
+
 });
 
 
-restService.listen((process.env.PORT || 8000), function() {
+restService.listen((process.env.PORT || 5000), function() {
     console.log("Server up and listening");
 });
 	
