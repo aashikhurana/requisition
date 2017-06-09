@@ -199,9 +199,9 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 console.info('Do the SOAP call');
 
 soap.createClient(url, function(err, client){
-   
-   
-   console.log("Setting security");
+	
+	if(!err){
+		console.log("Setting security");
    client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
@@ -212,13 +212,8 @@ soap.createClient(url, function(err, client){
     console.log(requestResult);
 	speech="Your request for"+order_item+"has been raised. Thank you for using Requisition Bot. Have a nice day!";
   });
- 
-});
-client.on('soapError', function(err) {
-    console.log("Error is caused due to"+err.message);
-	speech="There is an error in bot service";
-  });
-
+	});
+   }
 });
 return res.json({
         speech: speech,
