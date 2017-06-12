@@ -206,7 +206,7 @@ soap.createClient(url, function(err, client){
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
   client.createRequisition(OrderRequestElement, function(err, result, body) {
-   parseString(body, function(err, result){
+   parsestring(body, function(err, result){
     // Get The Result From The Soap API and Parse it to JSON
     //var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
     console.log(result);
