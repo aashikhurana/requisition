@@ -211,11 +211,6 @@ soap.createClient(url, function(err, client){
 	  console.log(body);
 	  }else{
 		  speech="There was some error in registering data";
-	return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-	  });
 	  }
 	});
    }
