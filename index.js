@@ -158,9 +158,9 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
         "errorProcessingLevel": "ALL",
         "purchaseRequestPayload": {
           "Description": "Ladder with Right Handrail",
-          "ApproverEmail": "fap1966-casey.brown@oracleads.com",
+          "ApproverEmail": "fap1297-casey.brown@oracleads.com",
           "DocumentStatusCode": "APPROVED",
-          "PreparerEmail": "fap1966-calvin.roth@oracleads.com",
+          "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
           "RequisitioningBUName": "US1 Business Unit",
           "ExternallyManagedFlag": "FALSE",
           "PurchaseRequestInputReqLineInterface": {
@@ -210,6 +210,7 @@ soap.createClient(url, function(err, client){
 	  if(!err){
 	  console.log(body);
 	  }else{
+		  console.log(err.message);
 		  speech="There was some error in registering data";
 	  }
 	});
