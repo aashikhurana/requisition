@@ -154,7 +154,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
         "interfaceSourceCode": "UK_F2F_Bot",
         "requisitioningBUName": "US1 Business Unit",
         "groupBy": "NONE",
-        "maximumBatchSize": "2500",
+        "maximumBatchSize": 2500,
         "errorProcessingLevel": "ALL",
         "purchaseRequestPayload": {
           "Description": "Ladder with Right Handrail",
@@ -167,18 +167,18 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "CategoryName": category_name,
             "CurrencyCode": "USD",
             "DeliverToLocationCode": "Seattle",
-            "DeliverToOrganizationCode": "001",
+            "DeliverToOrganizationCode": 001,
             "DestinationTypeCode": "EXPENSE",
             "ItemDescription": item_description,
             "LineType": "Goods",
             "ProcurementBUName": "US1 Business Unit",
-            "Quantity": "1",
+            "Quantity": 1,
             "SourceAgreementNumber": source_agreement_number,
             "SupplierItemNumber": supplier_item_number,
             "SupplierContactName": supplier_contact_name,
             "SupplierName": supplier_name,
             "SupplierSiteName": supplier_site_name,
-            "RequestedDeliveryDate": "2017-06-02",
+            "RequestedDeliveryDate": 2017-06-02,
             "Price": {
               "-currencyCode": "USD",
               "#text": price
@@ -186,7 +186,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "UnitOfMeasure": "Ea",
             "PurchaseRequestInputReqDistInterface": {
               "ChargeAccountId": "300000047301445",
-              "Percent": "100"
+              "Percent": 100
             }
           }
         }
