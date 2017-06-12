@@ -174,7 +174,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "ItemDescription": item_description,
             "LineType": "Goods",
             "ProcurementBUName": "US1 Business Unit",
-            "Quantity": "1",
+            "Quantity": 1,
             "SourceAgreementNumber": source_agreement_number,
             "SupplierItemNumber": supplier_item_number,
             "SupplierContactName":supplier_contact_name,
