@@ -195,7 +195,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	
   console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
-	  speech="Your request for"+order_item+"has been raised and under process. Please wait for requisition Id";
+	speech="Your request for"+order_item+"has been raised and under process. Please wait for requisition Id";
  
 console.info('Do the SOAP call');
 
@@ -209,19 +209,8 @@ soap.createClient(url, function(err, client){
   client.createRequisition(OrderRequestElement, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
-   parsestring(body, function(err, result){
-    // Get The Result From The Soap API and Parse it to JSON
-    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
-    console.log(requestResult);
-	speech="Thank you for using requisition BOt. Your Id is"+requestResult;
-	return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-});
-  });
 	  }else{
-		  speech="There was some error in generating id.";
+		  speech="There was some error in registering data";
 	return res.json({
         speech: speech,
         displayText: speech,
