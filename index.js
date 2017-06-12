@@ -164,7 +164,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
           "RequisitioningBUName": "US1 Business Unit",
           "ExternallyManagedFlag": false,
           "PurchaseRequestInputReqLineInterface": {
-            "CategoryName": "category_name,
+            "CategoryName": category_name,
             "CurrencyCode": "USD",
             "DeliverToLocationCode": "Seattle",
             "DeliverToOrganizationCode": "001",
