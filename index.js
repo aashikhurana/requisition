@@ -188,7 +188,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
               "@currencyCode": "USD",
               "$": price
             },
-            "UnitOfMeasure": "Ea",
+            "UnitOfMeasure": "zzu",
             "PurchaseRequestInputReqDistInterface": {
               "ChargeAccountId": 300000047301445,
               "Percent": 100
