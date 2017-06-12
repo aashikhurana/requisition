@@ -208,8 +208,8 @@ soap.createClient(url, function(err, client){
   client.createRequisition(OrderRequestElement, function(err, result, body) {
    parsestring(body, function(err, result){
     // Get The Result From The Soap API and Parse it to JSON
-    //var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
-    console.log(result);
+    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
+    console.log(requestResult);
 	speech="Your request for"+order_item+"has been raised. Thank you for using Requisition Bot. Have a nice day!";
   });
 	});
