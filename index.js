@@ -164,7 +164,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
           "DocumentStatusCode": "APPROVED",
           "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
           "RequisitioningBUName": "US1 Business Unit",
-          "ExternallyManagedFlag": false,
+          "ExternallyManagedFlag": "FALSE",
           "PurchaseRequestInputReqLineInterface": {
             "CategoryName": category_name,
             "CurrencyCode": "USD",
