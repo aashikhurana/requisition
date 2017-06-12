@@ -150,48 +150,64 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 	var  OrderRequestElement =   {
-	"createRequisition": {
-        "interfaceSourceCode": "UK_F2F_Bot",
-        "requisitioningBUName": "US1 Business Unit",
-        "groupBy": "NONE",
-        "maximumBatchSize": 2500,
-        "errorProcessingLevel": "ALL",
-        "purchaseRequestPayload": {
-          "Description": "Ladder with Right Handrail",
-          "ApproverEmail": "fap1297-casey.brown@oracleads.com",
-          "DocumentStatusCode": "APPROVED",
-          "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
-          "RequisitioningBUName": "US1 Business Unit",
-          "ExternallyManagedFlag": "FALSE",
-          "PurchaseRequestInputReqLineInterface": {
-            "CategoryName": category_name,
-            "CurrencyCode": "USD",
-            "DeliverToLocationCode": "Seattle",
-            "DeliverToOrganizationCode": "001",
-            "DestinationTypeCode": "EXPENSE",
-            "ItemDescription": item_description,
-            "LineType": "Goods",
-            "ProcurementBUName": "US1 Business Unit",
-            "Quantity": 1,
-            "SourceAgreementNumber": source_agreement_number,
-            "SupplierItemNumber": supplier_item_number,
-            "SupplierContactName": supplier_contact_name,
-            "SupplierName": supplier_name,
-            "SupplierSiteName": supplier_site_name,
-            "RequestedDeliveryDate": "2017-06-02",
-            "Price": {
-              "@currencyCode": "USD",
-              "$": price
-            },
-            "UnitOfMeasure": "Ea",
-            "PurchaseRequestInputReqDistInterface": {
-              "ChargeAccountId": 300000047301445,
-              "Percent": 100
-            }
-          }
-        }
-      }
-	};
+					  "createRequisition": {
+						 "interfaceSourceCode": "UK_F2F_Bot",
+						 "requisitioningBUName": "US1 Business Unit",
+						 "groupBy": "NONE",
+						 "maximumBatchSize": 2500,
+						 "errorProcessingLevel": "ALL",
+						 "purchaseRequestPayload": 
+							{
+							   "ApproverEmail": "fap1297-casey.brown@oracleads.com",
+										
+							   "Description": item_description,
+							   "DocumentStatusCode": "APPROVED",
+							   
+							   "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
+							   "RequisitioningBUName": "US1 Business Unit",
+							   "ExternallyManagedFlag": false,
+							   
+							   "PurchaseRequestInputReqLineInterface": 
+								  {
+									 "CategoryName": category_name,
+									 "CurrencyCode": "USD",
+									 "DeliverToLocationCode": "Seattle",
+									 "DeliverToOrganizationCode": "001",
+									 "DestinationTypeCode": "EXPENSE",
+									 
+									 "ItemDescription": item_description,
+									 "ProcurementBUName": "US1 Business Unit",
+									 "Quantity":1,
+									 "SourceAgreementNumber": source_agreement_number,
+									 "SupplierItemNumber": supplier_item_number,
+									 "SupplierContactName": supplier_contact_name,
+									 
+									 "SupplierName": supplier_name,
+									 "SupplierSiteName": supplier_site_name,
+									 "RequestedDeliveryDate": "2017-06-02",
+									 "Price": {
+										"@currencyCode": "USD",
+										"$": price
+									 },
+									 "UnitOfMeasure": "Ea",
+									 "PurchaseRequestInputReqDistInterface": 
+									   
+										{
+										   "ChargeAccountId": 300000047301445,
+										   "Percent": 100
+										   
+										}
+									 
+									
+								  }
+								  
+								  
+							   
+							}
+							
+							
+					  }
+				   };
 	
   console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
