@@ -57,11 +57,11 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 		console.log("Inside pen")
 		
 		    category_name= "Pens and Pencils";
-            source_agreement_number=52172;
+            source_agreement_number="52172";
 		    supplier_contact_name="Gasol, Jim";
             supplier_name= "Office Depot";
             supplier_site_name= "OD US1";
-            price=3.60;
+            price="3.60";
 			
 		if(order_color=='black'){
 			console.log("Inside black")
@@ -167,7 +167,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "CategoryName": category_name,
             "CurrencyCode": "USD",
             "DeliverToLocationCode": "Seattle",
-            "DeliverToOrganizationCode": 001,
+            "DeliverToOrganizationCode": "001",
             "DestinationTypeCode": "EXPENSE",
             "ItemDescription": item_description,
             "LineType": "Goods",
@@ -180,8 +180,8 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "SupplierSiteName": supplier_site_name,
             "RequestedDeliveryDate": "2017-06-02",
             "Price": {
-              "-currencyCode": "USD",
-              "#text": price
+              "@currencyCode": "USD",
+              "$": price
             },
             "UnitOfMeasure": "Ea",
             "PurchaseRequestInputReqDistInterface": {
