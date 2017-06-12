@@ -209,6 +209,16 @@ soap.createClient(url, function(err, client){
   client.createRequisition(OrderRequestElement, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
+	   parsestring(body, function(err, result){
+    // Get The Result From The Soap API and Parse it to JSON
+	if(!err){
+    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
+    console.log(requestResult);
+	speech="Thank you for using requisition BOt. Your Id is"+requestResult;
+	}else{
+		console.log(err.message);
+		speech="There was some error in generating id.";
+  });
 	  }else{
 		  console.log(err.message);
 		  speech="There was some error in registering data";
