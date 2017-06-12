@@ -8,7 +8,7 @@ var http = require('http');
 
 var qs = require('querystring');
 
-var soap=require('strong-soap');
+var soap=require('soap');
 
 var parsestring=require('xml2js').parseString;
 //restService.use(bodyParser.urlencoded({
@@ -198,7 +198,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
  
 console.info('Do the SOAP call');
 
-soap.createclient(url, function(err, client){
+soap.createClient(url, function(err, client){
 	
 	if(!err){
 		console.log("Setting security");
@@ -208,8 +208,8 @@ soap.createclient(url, function(err, client){
   client.createRequisition(OrderRequestElement, function(err, result, body) {
    parseString(body, function(err, result){
     // Get The Result From The Soap API and Parse it to JSON
-    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
-    console.log(requestResult);
+    //var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
+    console.log(result);
 	speech="Your request for"+order_item+"has been raised. Thank you for using Requisition Bot. Have a nice day!";
   });
 	});
