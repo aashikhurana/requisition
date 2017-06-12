@@ -223,12 +223,14 @@ soap.createClient(url, function(err, client){
 	speech="Thank you for using requisition BOt. Your Id is"+requestResult;
 	}else{
 		console.log("There was some error in generating id."+err.message);
+		console.log(err.stack);
 		speech="There was some error in generating id.";
   }
 	  });
 	  }
 	  else{
 		  console.log("There was some error in registering data  "+err.message);
+		  console.log(er.stack);
 		  speech="There was some error in registering data";
 	  }
 	});
