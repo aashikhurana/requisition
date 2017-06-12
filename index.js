@@ -57,7 +57,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 		console.log("Inside pen")
 		
 		    category_name= "Pens and Pencils";
-            source_agreement_number="52172";
+            source_agreement_number=52172;
 		    supplier_contact_name="Gasol, Jim";
             supplier_name= "Office Depot";
             supplier_site_name= "OD US1";
