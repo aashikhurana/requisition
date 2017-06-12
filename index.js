@@ -180,7 +180,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "SupplierContactName":supplier_contact_name,
             "SupplierName":supplier_name,
             "SupplierSiteName":supplier_site_name,
-            "RequestedDeliveryDate": "2017-06-02",
+            "RequestedDeliveryDate": "2017-06-15",
             "Price": {
               "@currencyCode": "USD",
               "$": price
