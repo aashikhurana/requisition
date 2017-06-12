@@ -178,14 +178,14 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
             "SupplierContactName": supplier_contact_name,
             "SupplierName": supplier_name,
             "SupplierSiteName": supplier_site_name,
-            "RequestedDeliveryDate": 2017-06-02,
+            "RequestedDeliveryDate": "2017-06-02",
             "Price": {
               "-currencyCode": "USD",
               "#text": price
             },
             "UnitOfMeasure": "Ea",
             "PurchaseRequestInputReqDistInterface": {
-              "ChargeAccountId": "300000047301445",
+              "ChargeAccountId": 300000047301445,
               "Percent": 100
             }
           }
