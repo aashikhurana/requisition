@@ -150,6 +150,8 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 	var  OrderRequestElement =   {
+		 "Header": null,
+				   "Body": {
 					 "createRequisition": {
         "interfaceSourceCode": "UK_F2F_Bot",
         "requisitioningBUName": "US1 Business Unit",
@@ -157,7 +159,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
         "maximumBatchSize": 2500,
         "errorProcessingLevel": "ALL",
         "purchaseRequestPayload": {
-          "Description": "Ladder with Right Handrail",
+          "Description": item_description,
           "ApproverEmail": "fap1297-casey.brown@oracleads.com",
           "DocumentStatusCode": "APPROVED",
           "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
@@ -191,6 +193,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
           }
         }
       }
+				   }
 				   };
 	
   console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
