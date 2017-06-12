@@ -234,6 +234,8 @@ soap.createClient(url, function(err, client){
 		  speech="There was some error in registering data";
 	  }
 	});
+   }else{
+	   console.log(err.message);
    }
    
 });
