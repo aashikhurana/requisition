@@ -61,7 +61,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 		    supplier_contact_name="Gasol, Jim";
             supplier_name= "Office Depot";
             supplier_site_name= "OD US1";
-            price="3.60";
+            price=3.60;
 			
 		if(order_color=='black'){
 			console.log("Inside black")
@@ -195,7 +195,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	
   console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
-	speech="Your request for"+order_item+"has been raised and under process. Please wait for requisition Id";
+	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
  
 console.info('Do the SOAP call');
 
@@ -222,7 +222,7 @@ soap.createClient(url, function(err, client){
 	  });
 	  }
 	  else{
-		  console.log("There was some error in registering data"+err.message);
+		  console.log("There was some error in registering data  "+err.message);
 		  speech="There was some error in registering data";
 	  }
 	});
