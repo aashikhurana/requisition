@@ -230,7 +230,7 @@ soap.createClient(url, function(err, client){
 	  }
 	  else{
 		  console.log("There was some error in registering data  "+err.message);
-		  console.log(er.stack);
+		  console.log(err.stack);
 		  speech="There was some error in registering data";
 	  }
 	});
