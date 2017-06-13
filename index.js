@@ -150,59 +150,77 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
-   OrderRequestElement =   {
-		
-					 "createRequisition": {
-        "interfaceSourceCode": "UK_F2F_Bot",
-        "requisitioningBUName": "US1 Business Unit",
-        "groupBy": "NONE",
-        "maximumBatchSize": 2500,
-        "errorProcessingLevel": "ALL",
-        "purchaseRequestPayload": [{
-          "Description": item_description,
-          "ApproverEmail": "fap1297-casey.brown@oracleads.com",
-          "DocumentStatusCode": "APPROVED",
-          "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
-          "RequisitioningBUName": "US1 Business Unit",
-          "ExternallyManagedFlag": false,
-          "PurchaseRequestInputReqLineInterface": [{
-            "CategoryName": category_name,
-            "CurrencyCode": "USD",
-            "DeliverToLocationCode": "Seattle",
-            "DeliverToOrganizationCode": "001",
-            "DestinationTypeCode": "EXPENSE",
-            "ItemDescription": item_description,
-            "LineType": "Goods",
-            "ProcurementBUName": "US1 Business Unit",
-           "Quantity": {
+				   
+				   var newReq = {
+				   "Header": null,
+				   "Body": {
+					  "createRequisition": {
+						 "interfaceSourceCode": "UK_F2F_Bot",
+						 "requisitioningBUName": "US1 Business Unit",
+						 "groupBy": "NONE",
+						 "maximumBatchSize": 2500,
+						 "errorProcessingLevel": "ALL",
+						 "purchaseRequestPayload": [
+							{
+							   "ApproverEmail": "fap1297-casey.brown@oracleads.com",
+										
+							   "Description": item_description,
+							   "DocumentStatusCode": "APPROVED",
+							   
+							   "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
+							   "RequisitioningBUName": "US1 Business Unit",
+							   "ExternallyManagedFlag": false,
+							   
+							   "PurchaseRequestInputReqLineInterface": [
+								  {
+									 "CategoryName": category_name,
+									 "CurrencyCode": "USD",
+									 "DeliverToLocationCode": "Seattle",
+									 "DeliverToOrganizationCode": "001",
+									 "DestinationTypeCode": "EXPENSE",
+									 
+									 "ItemDescription": item_description,
+									 "LineType": "Goods",
+									 "ProcurementBUName": "US1 Business Unit",
+									 "Quantity":{
                         "@unitCode": "zzu",
                         "$": "1"
                      },
-            "SourceAgreementNumber": source_agreement_number,
-            "SupplierItemNumber": supplier_item_number,
-            "SupplierContactName":supplier_contact_name,
-            "SupplierName":supplier_name,
-            "SupplierSiteName":supplier_site_name,
-            "RequestedDeliveryDate": "2017-06-15",
-            "Price": {
-              "@currencyCode": "USD",
-              "$": price
-            },
-            "UnitOfMeasure": "Ea",
-            "PurchaseRequestInputReqDistInterface":[ {
-              "ChargeAccountId": 300000047301445,
-              "Percent": 100
-            }
-			]
-          }
-		  ]
-        }
-		]
-      }
-				   };
+									 "SourceAgreementNumber": source_agreement_number,
+									 "SupplierItemNumber": supplier_item_number,
+									 "SupplierContactName": supplier_contact_name,
+									 
+									 "SupplierName": supplier_name,
+									 "SupplierSiteName": supplier_site_name,
+									 "RequestedDeliveryDate": "2017-06-15",
+									 "Price": {
+										"@currencyCode": "USD",
+										"$": price
+									 },
+									 "UnitOfMeasure": "Ea",
+									 "PurchaseRequestInputReqDistInterface": [
+									   
+										{
+										   "ChargeAccountId": 300000047301445,
+										   "Percent": 100
+										   
+										}
+									 ]
+									
+								  }
+								  
+								  
+							   ]
+							}
+							
+							
+						 ]
+					  }
+				   }
+				}
 	
 	
-console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
+console.log("Request Payload is: "+JSON.stringify(newReq));
 	  
 	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
 	
@@ -221,7 +239,7 @@ soap.createClient(url,options, function(err, client){
    client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
-  client.createRequisition(OrderRequestElement, function(err, result, body) {
+  client.createRequisition(newReq, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
 	   parsestring(body, function(err, result){
