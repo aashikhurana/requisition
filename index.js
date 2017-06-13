@@ -151,48 +151,48 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 	var xmlRequest=
-	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/">'+
-   '<soapenv:Header/>'+
-   '<soapenv:Body>'+
+	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
+   '<soapenv:Header/> \n'+
+   '<soapenv:Body> \n'+
       '<typ:createRequisition>'+
-			'<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode>'+
-			'<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName>'+
-			'<typ:groupBy>NONE</typ:groupBy>'+
-			'<typ:maximumBatchSize>2500</typ:maximumBatchSize>'+
-			'<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>'+				
-			'<typ:purchaseRequestPayload>'+
-				'<pur:Description>'+item_description+'</pur:Description>'+
-				'<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail>'+
-				'<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode>'+
-				'<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail>'+ 
-				'<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName>'+
-				'<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag>'+			
-				'<pur:PurchaseRequestInputReqLineInterface>'+
-					'<pur:CategoryName>Pens and Pencils</pur:CategoryName>'+
-					'<pur:CurrencyCode>USD</pur:CurrencyCode>'+
-					'<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode>'+
-					'<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode>'+
-					'<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode>'+				
-					'<pur:ItemDescription>'+item_description+'</pur:ItemDescription>'+
-					'<pur:LineType>Goods</pur:LineType>'+
-					'<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName>'+					
-					'<pur:Quantity>1</pur:Quantity>'+
-					'<pur:SourceAgreementNumber>'+source_agreement_number+'</pur:SourceAgreementNumber>'+					
-					'<pur:SupplierItemNumber>'+supplier_item_number+'</pur:SupplierItemNumber>'+
-					'<pur:SupplierContactName>'+supplier_contact_name+'</pur:SupplierContactName>'+
-					'<pur:SupplierName>'+supplier_name+'</pur:SupplierName>'+
-					'<pur:SupplierSiteName>'+supplier_site_name+'</pur:SupplierSiteName>'+
-					'<pur:RequestedDeliveryDate>2017-06-16</pur:RequestedDeliveryDate>'+
-					'<pur:Price currencyCode="USD">'+price+'</pur:Price>'+
-					'<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure>'+						
-					'<pur:PurchaseRequestInputReqDistInterface>'+
-						'<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId>'+   
-						'<pur:Percent>100</pur:Percent>'+
-					'</pur:PurchaseRequestInputReqDistInterface>'+
-				'</pur:PurchaseRequestInputReqLineInterface>'+
-			'</typ:purchaseRequestPayload>'+
-      '</typ:createRequisition>'+
-   '</soapenv:Body>'+
+			'<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode> \n'+
+			'<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName> \n'+
+			'<typ:groupBy>NONE</typ:groupBy> \n'+
+			'<typ:maximumBatchSize>2500</typ:maximumBatchSize> \n'+
+			'<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>\n'+				
+			'<typ:purchaseRequestPayload> \n'+
+				'<pur:Description>'+item_description+'</pur:Description> \n'+
+				'<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail> \n'+
+				'<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode> \n'+
+				'<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail> \n'+ 
+				'<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName> \n'+
+				'<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag> \n'+			
+				'<pur:PurchaseRequestInputReqLineInterface> \n'+
+					'<pur:CategoryName>Pens and Pencils</pur:CategoryName> \n'+
+					'<pur:CurrencyCode>USD</pur:CurrencyCode> \n'+
+					'<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode> \n'+
+					'<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode> \n'+
+					'<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode> \n'+				
+					'<pur:ItemDescription>'+item_description+'</pur:ItemDescription> \n'+
+					'<pur:LineType>Goods</pur:LineType> \n'+
+					'<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName> \n'+					
+					'<pur:Quantity>1</pur:Quantity> \n'+
+					'<pur:SourceAgreementNumber>'+source_agreement_number+'</pur:SourceAgreementNumber> \n'+					
+					'<pur:SupplierItemNumber>'+supplier_item_number+'</pur:SupplierItemNumber> \n'+
+					'<pur:SupplierContactName>'+supplier_contact_name+'</pur:SupplierContactName> \n'+
+					'<pur:SupplierName>'+supplier_name+'</pur:SupplierName> \n'+
+					'<pur:SupplierSiteName>'+supplier_site_name+'</pur:SupplierSiteName> \n'+
+					'<pur:RequestedDeliveryDate>2017-06-16</pur:RequestedDeliveryDate> \n'+
+					'<pur:Price currencyCode="USD">'+price+'</pur:Price> \n'+
+					'<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure> \n'+						
+					'<pur:PurchaseRequestInputReqDistInterface> \n'+
+						'<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId> \n'+   
+						'<pur:Percent>100</pur:Percent> \n'+
+					'</pur:PurchaseRequestInputReqDistInterface> \n'+
+				'</pur:PurchaseRequestInputReqLineInterface> \n'+
+			'</typ:purchaseRequestPayload> \n'+
+      '</typ:createRequisition> \n'+
+   '</soapenv:Body> \n'+
 '</soapenv:Envelope>'
 
 console.log("xml request:"+xmlRequest);
