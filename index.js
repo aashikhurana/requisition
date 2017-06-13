@@ -160,7 +160,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 						 "groupBy": "NONE",
 						 "maximumBatchSize": 2500,
 						 "errorProcessingLevel": "ALL",
-						 "purchaseRequestPayload": [
+						 "purchaseRequestPayload": 
 							{
 							   "ApproverEmail": "fap1297-casey.brown@oracleads.com",
 										
@@ -171,7 +171,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 							   "RequisitioningBUName": "US1 Business Unit",
 							   "ExternallyManagedFlag": false,
 							   
-							   "PurchaseRequestInputReqLineInterface": [
+							   "PurchaseRequestInputReqLineInterface": 
 								  {
 									 "CategoryName": category_name,
 									 "CurrencyCode": "USD",
@@ -198,23 +198,23 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 										"$": price
 									 },
 									 "UnitOfMeasure": "Ea",
-									 "PurchaseRequestInputReqDistInterface": [
+									 "PurchaseRequestInputReqDistInterface": 
 									   
 										{
 										   "ChargeAccountId": 300000047301445,
 										   "Percent": 100
 										   
 										}
-									 ]
+									 
 									
 								  }
 								  
 								  
-							   ]
+							   
 							}
 							
 							
-						 ]
+						 
 					  }
 				   }
 				}
@@ -226,7 +226,7 @@ console.log("Request Payload is: "+JSON.stringify(newReq));
 	
 	var options = {
 		headers: {
-         'Content-Type': 'text/xml'
+         'Content-Type': "application/soap+xml"
     }
 	};
  
