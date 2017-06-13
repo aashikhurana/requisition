@@ -195,6 +195,8 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
    '</soapenv:Body>'+
 '</soapenv:Envelope>'
 
+console.log("xml request:"+xmlRequest);
+
 parsestring(xmlRequest,function (err, result) {
     console.log(result);
 	OrderRequestElement=result;
@@ -214,7 +216,7 @@ soap.createClient(url, function(err, client){
    client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
-  client.createRequisition(OrderRequestElement, function(err, result, body) {
+  client.createRequisition(xmlRequest, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
 	   parsestring(body, function(err, result){
