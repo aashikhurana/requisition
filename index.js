@@ -150,49 +150,50 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
-	var xmlRequest="<soapenv:Envelope xmlns:soapenv="\\"http://schemas.xmlsoap.org/soap/envelope/ \\"" xmlns:typ="\\"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/ \\"" xmlns:pur="\\"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/ \\"">"+
-   "<soapenv:Header/>"+
-   "<soapenv:Body>"+
-      "<typ:createRequisition>"+
-			"<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode>"+
-			"<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName>"+
-			"<typ:groupBy>NONE</typ:groupBy>"+
-			"<typ:maximumBatchSize>2500</typ:maximumBatchSize>"+
-			"<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>"+				
-			"<typ:purchaseRequestPayload>"+
-				"<pur:Description></pur:Description>"+
-				"<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail>"+
-				"<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode>"+
-				"<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail>"+ 
-				"<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName>"+
-				"<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag>"+			
-				"<pur:PurchaseRequestInputReqLineInterface>"+
-					"<pur:CategoryName>Pens and Pencils</pur:CategoryName>"+
-					"<pur:CurrencyCode>USD</pur:CurrencyCode>"+
-					"<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode>"+
-					"<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode>"+
-					"<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode>"+				
-					"<pur:ItemDescription>Round Stic Ball Point Pen, Fine, Blue</pur:ItemDescription>"+
-					"<pur:LineType>Goods</pur:LineType>"+
-					"<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName>"+					
-					"<pur:Quantity>1</pur:Quantity>"+
-					"<pur:SourceAgreementNumber>52172</pur:SourceAgreementNumber>"+					
-					"<pur:SupplierItemNumber>BIC20130</pur:SupplierItemNumber>"+
-					"<pur:SupplierContactName>Gasol, Jim</pur:SupplierContactName>"+
-					"<pur:SupplierName>Office Depot</pur:SupplierName>"+
-					"<pur:SupplierSiteName>OD US1</pur:SupplierSiteName>"+
-					"<pur:RequestedDeliveryDate>2017-06-02</pur:RequestedDeliveryDate>"+
-					"<pur:Price currencyCode="\\"USD\\"">2</pur:Price>"+
-					"<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure>"+						
-					"<pur:PurchaseRequestInputReqDistInterface>"+
-						"<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId>"+   
-						"<pur:Percent>100</pur:Percent>"+
-					"</pur:PurchaseRequestInputReqDistInterface>"+
-				"</pur:PurchaseRequestInputReqLineInterface>"+
-			"</typ:purchaseRequestPayload>"+
-      "</typ:createRequisition>"+
-   "</soapenv:Body>"+
-"</soapenv:Envelope>"
+	var xmlRequest='<?xml version="1.0" encoding="utf-8"?>'+
+	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/">'+
+   '<soapenv:Header/>'+
+   '<soapenv:Body>'+
+      '<typ:createRequisition>'+
+			'<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode>'+
+			'<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName>'+
+			'<typ:groupBy>NONE</typ:groupBy>'+
+			'<typ:maximumBatchSize>2500</typ:maximumBatchSize>'+
+			'<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>'+				
+			'<typ:purchaseRequestPayload>'+
+				'<pur:Description>'+item_description+'</pur:Description>'+
+				'<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail>'+
+				'<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode>'+
+				'<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail>'+ 
+				'<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName>'+
+				'<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag>'+			
+				'<pur:PurchaseRequestInputReqLineInterface>'+
+					'<pur:CategoryName>Pens and Pencils</pur:CategoryName>'+
+					'<pur:CurrencyCode>USD</pur:CurrencyCode>'+
+					'<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode>'+
+					'<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode>'+
+					'<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode>'+				
+					'<pur:ItemDescription>'+item_description+'</pur:ItemDescription>'+
+					'<pur:LineType>Goods</pur:LineType>'+
+					'<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName>'+					
+					'<pur:Quantity>1</pur:Quantity>'+
+					'<pur:SourceAgreementNumber>'+source_agreement_number+'</pur:SourceAgreementNumber>'+					
+					'<pur:SupplierItemNumber>'+supplier_item_number+'</pur:SupplierItemNumber>'+
+					'<pur:SupplierContactName>'+supplier_contact_name+'</pur:SupplierContactName>'+
+					'<pur:SupplierName>'+supplier_name+'</pur:SupplierName>'+
+					'<pur:SupplierSiteName>'+supplier_site_name+'</pur:SupplierSiteName>'+
+					'<pur:RequestedDeliveryDate>2017-06-16</pur:RequestedDeliveryDate>'+
+					'<pur:Price currencyCode="USD">'+price+'</pur:Price>'+
+					'<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure>'+						
+					'<pur:PurchaseRequestInputReqDistInterface>'+
+						'<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId>'+   
+						'<pur:Percent>100</pur:Percent>'+
+					'</pur:PurchaseRequestInputReqDistInterface>'+
+				'</pur:PurchaseRequestInputReqLineInterface>'+
+			'</typ:purchaseRequestPayload>'+
+      '</typ:createRequisition>'+
+   '</soapenv:Body>'+
+'</soapenv:Envelope>'
 
 parsestring(xmlRequest,function (err, result) {
     console.log(result);
