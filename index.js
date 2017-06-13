@@ -154,7 +154,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
    '<soapenv:Header/> \n'+
    '<soapenv:Body> \n'+
-      '<typ:createRequisition>'+
+      '<typ:createRequisition>\n'+
 			'<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode> \n'+
 			'<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName> \n'+
 			'<typ:groupBy>NONE</typ:groupBy> \n'+
