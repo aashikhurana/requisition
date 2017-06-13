@@ -151,7 +151,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 	var xmlRequest=
-	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
+	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
    '<soapenv:Header/> \n'+
    '<soapenv:Body> \n'+
       '<typ:createRequisition>\n'+
