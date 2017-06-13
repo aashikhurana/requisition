@@ -43,6 +43,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var speech="";
 	
 	var requisition_id=" ";
+	var OrderRequestElement=" ";
 	
 var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseRequest/PurchaseRequestService?WSDL';
 
@@ -149,61 +150,58 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
+	var xmlRequest="<soapenv:Envelope "+ "xmlns:soapenv="\\"http://schemas.xmlsoap.org/soap/envelope/ \\"""
++	"xmlns:typ="\\"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/ \\""" +"xmlns:pur="\\"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/ \\"">"
+   "<soapenv:Header/>"+
+   "<soapenv:Body>"+
+      "<typ:createRequisition>"+
+			"<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode>"+
+			"<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName>"+
+			"<typ:groupBy>NONE</typ:groupBy>"+
+			"<typ:maximumBatchSize>2500</typ:maximumBatchSize>"+
+			"<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>"+				
+			"<typ:purchaseRequestPayload>"+
+				"<pur:Description></pur:Description>"+
+				"<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail>"+
+				"<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode>"+
+				"<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail>"+ 
+				"<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName>"+
+				"<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag>"+			
+				"<pur:PurchaseRequestInputReqLineInterface>"+
+					"<pur:CategoryName>Pens and Pencils</pur:CategoryName>"+
+					"<pur:CurrencyCode>USD</pur:CurrencyCode>"+
+					"<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode>"+
+					"<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode>"+
+					"<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode>"+				
+					"<pur:ItemDescription>Round Stic Ball Point Pen, Fine, Blue</pur:ItemDescription>"+
+					"<pur:LineType>Goods</pur:LineType>"+
+					"<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName>"+					
+					"<pur:Quantity>1</pur:Quantity>"+
+					"<pur:SourceAgreementNumber>52172</pur:SourceAgreementNumber>"+					
+					"<pur:SupplierItemNumber>BIC20130</pur:SupplierItemNumber>"+
+					"<pur:SupplierContactName>Gasol, Jim</pur:SupplierContactName>"+
+					"<pur:SupplierName>Office Depot</pur:SupplierName>"+
+					"<pur:SupplierSiteName>OD US1</pur:SupplierSiteName>"+
+					"<pur:RequestedDeliveryDate>2017-06-02</pur:RequestedDeliveryDate>"+
+					"<pur:Price currencyCode="\\"USD\\"">2</pur:Price>"+
+					"<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure>"+						
+					"<pur:PurchaseRequestInputReqDistInterface>"+
+						"<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId>"+   
+						"<pur:Percent>100</pur:Percent>"+
+					"</pur:PurchaseRequestInputReqDistInterface>"+
+				"</pur:PurchaseRequestInputReqLineInterface>"+
+			"</typ:purchaseRequestPayload>"+
+      "</typ:createRequisition>"+
+   "</soapenv:Body>"+
+"</soapenv:Envelope>"
+
+parsestring(xmlRequest,function (err, result) {
+    console.log(result);
+	OrderRequestElement=result;
+});
 	
-	var  OrderRequestElement =   {
-		 "Header": null,
-				   "Body": {
-					 "createRequisition": {
-        "interfaceSourceCode": "UK_F2F_Bot",
-        "requisitioningBUName": "US1 Business Unit",
-        "groupBy": "NONE",
-        "maximumBatchSize": 2500,
-        "errorProcessingLevel": "ALL",
-        "purchaseRequestPayload": [{
-          "Description": item_description,
-          "ApproverEmail": "fap1297-casey.brown@oracleads.com",
-          "DocumentStatusCode": "APPROVED",
-          "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
-          "RequisitioningBUName": "US1 Business Unit",
-          "ExternallyManagedFlag": false,
-          "PurchaseRequestInputReqLineInterface": [{
-            "CategoryName": category_name,
-            "CurrencyCode": "USD",
-            "DeliverToLocationCode": "Seattle",
-            "DeliverToOrganizationCode": "001",
-            "DestinationTypeCode": "EXPENSE",
-            "ItemDescription": item_description,
-            "LineType": "Goods",
-            "ProcurementBUName": "US1 Business Unit",
-           "Quantity": {
-                        "@unitCode": "zzu",
-                        "$": "1"
-                     },
-            "SourceAgreementNumber": source_agreement_number,
-            "SupplierItemNumber": supplier_item_number,
-            "SupplierContactName":supplier_contact_name,
-            "SupplierName":supplier_name,
-            "SupplierSiteName":supplier_site_name,
-            "RequestedDeliveryDate": "2017-06-15",
-            "Price": {
-              "@currencyCode": "USD",
-              "$": price
-            },
-            "UnitOfMeasure": "Ea",
-            "PurchaseRequestInputReqDistInterface":[ {
-              "ChargeAccountId": 300000047301445,
-              "Percent": 100
-            }
-			]
-          }
-		  ]
-        }
-		]
-      }
-				   }
-				   };
 	
-  console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
+console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
 	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
  
