@@ -150,7 +150,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
-	var xmlRequest=
+	var xmlRequest='<?xml version="1.0" encoding="UTF-8"?>'+
 '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur=http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
    '<soapenv:Header/> \n'+
    '<soapenv:Body> \n'+
@@ -211,10 +211,16 @@ parsestring(xmlRequest,function (err, result) {
 console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	  
 	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
+	
+	var options = {
+		headers: {
+         'Content-Type': 'text/xml'
+    }
+	};
  
 console.info('Do the SOAP call');
 
-soap.createClient(url, function(err, client){
+soap.createClient(url,options, function(err, client){
 	
 	if(!err){
 		console.log("Setting security");
