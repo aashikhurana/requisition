@@ -226,13 +226,13 @@ console.log("Request Payload is: "+JSON.stringify(newReq));
 	
 	var options = {
 		headers: {
-         'Content-Type': 'application/json'
+         'Content-Type': 'text/xml'
     }
 	};
  
 console.info('Do the SOAP call');
 
-soap.createClient(url,options, function(err, client){
+soap.createClient(url,options,function(err, client){
 	
 	if(!err){
 		console.log("Setting security");
