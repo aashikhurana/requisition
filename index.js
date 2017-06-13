@@ -151,8 +151,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
    OrderRequestElement =   {
-		 "Header": null,
-				   "Body": {
+		
 					 "createRequisition": {
         "interfaceSourceCode": "UK_F2F_Bot",
         "requisitioningBUName": "US1 Business Unit",
@@ -200,7 +199,6 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
         }
 		]
       }
-				   }
 				   };
 	
 	
