@@ -150,7 +150,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
-	var xmlRequest='<?xml version="1.0" encoding="utf-8"?>'+
+	var xmlRequest='<?xml version="1.0" encoding="utf-8">'+
 	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur='+'"http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/">'+
    '<soapenv:Header/>'+
    '<soapenv:Body>'+
