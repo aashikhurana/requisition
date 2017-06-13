@@ -198,8 +198,13 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 console.log("xml request:"+xmlRequest);
 
 parsestring(xmlRequest,function (err, result) {
+	if(!err){
     console.log(result);
 	OrderRequestElement=result;
+	}
+	else{
+		console.log("parsing xml error "+err.message);
+	}
 });
 	
 	
