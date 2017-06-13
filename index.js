@@ -150,62 +150,58 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
-	var xmlRequest='<?xml version="1.0" encoding="UTF-8"?>'+
-'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur=http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
-   '<soapenv:Header/> \n'+
-   '<soapenv:Body> \n'+
-      '<typ:createRequisition>\n'+
-			'<typ:interfaceSourceCode>UK_F2F_Bot</typ:interfaceSourceCode> \n'+
-			'<typ:requisitioningBUName>US1 Business Unit</typ:requisitioningBUName> \n'+
-			'<typ:groupBy>NONE</typ:groupBy> \n'+
-			'<typ:maximumBatchSize>2500</typ:maximumBatchSize> \n'+
-			'<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>\n'+				
-			'<typ:purchaseRequestPayload> \n'+
-				'<pur:Description>'+item_description+'</pur:Description> \n'+
-				'<pur:ApproverEmail>fap1297-casey.brown@oracleads.com</pur:ApproverEmail> \n'+
-				'<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode> \n'+
-				'<pur:PreparerEmail>fap1297-calvin.roth@oracleads.com</pur:PreparerEmail> \n'+ 
-				'<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName> \n'+
-				'<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag> \n'+			
-				'<pur:PurchaseRequestInputReqLineInterface> \n'+
-					'<pur:CategoryName>Pens and Pencils</pur:CategoryName> \n'+
-					'<pur:CurrencyCode>USD</pur:CurrencyCode> \n'+
-					'<pur:DeliverToLocationCode>Seattle</pur:DeliverToLocationCode> \n'+
-					'<pur:DeliverToOrganizationCode>001</pur:DeliverToOrganizationCode> \n'+
-					'<pur:DestinationTypeCode>EXPENSE</pur:DestinationTypeCode> \n'+				
-					'<pur:ItemDescription>'+item_description+'</pur:ItemDescription> \n'+
-					'<pur:LineType>Goods</pur:LineType> \n'+
-					'<pur:ProcurementBUName>US1 Business Unit</pur:ProcurementBUName> \n'+					
-					'<pur:Quantity>1</pur:Quantity> \n'+
-					'<pur:SourceAgreementNumber>'+source_agreement_number+'</pur:SourceAgreementNumber> \n'+					
-					'<pur:SupplierItemNumber>'+supplier_item_number+'</pur:SupplierItemNumber> \n'+
-					'<pur:SupplierContactName>'+supplier_contact_name+'</pur:SupplierContactName> \n'+
-					'<pur:SupplierName>'+supplier_name+'</pur:SupplierName> \n'+
-					'<pur:SupplierSiteName>'+supplier_site_name+'</pur:SupplierSiteName> \n'+
-					'<pur:RequestedDeliveryDate>2017-06-16</pur:RequestedDeliveryDate> \n'+
-					'<pur:Price currencyCode="USD">'+price+'</pur:Price> \n'+
-					'<pur:UnitOfMeasure>Ea</pur:UnitOfMeasure> \n'+						
-					'<pur:PurchaseRequestInputReqDistInterface> \n'+
-						'<pur:ChargeAccountId>300000047301445</pur:ChargeAccountId> \n'+   
-						'<pur:Percent>100</pur:Percent> \n'+
-					'</pur:PurchaseRequestInputReqDistInterface> \n'+
-				'</pur:PurchaseRequestInputReqLineInterface> \n'+
-			'</typ:purchaseRequestPayload> \n'+
-      '</typ:createRequisition> \n'+
-   '</soapenv:Body> \n'+
-'</soapenv:Envelope>'
-
-console.log("xml request:"+xmlRequest);
-
-parsestring(xmlRequest,function (err, result) {
-	if(!err){
-    console.log(result);
-	OrderRequestElement=result;
-	}
-	else{
-		console.log("parsing xml error "+err.message);
-	}
-});
+   OrderRequestElement =   {
+		 "Header": null,
+				   "Body": {
+					 "createRequisition": {
+        "interfaceSourceCode": "UK_F2F_Bot",
+        "requisitioningBUName": "US1 Business Unit",
+        "groupBy": "NONE",
+        "maximumBatchSize": 2500,
+        "errorProcessingLevel": "ALL",
+        "purchaseRequestPayload": [{
+          "Description": item_description,
+          "ApproverEmail": "fap1297-casey.brown@oracleads.com",
+          "DocumentStatusCode": "APPROVED",
+          "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
+          "RequisitioningBUName": "US1 Business Unit",
+          "ExternallyManagedFlag": false,
+          "PurchaseRequestInputReqLineInterface": [{
+            "CategoryName": category_name,
+            "CurrencyCode": "USD",
+            "DeliverToLocationCode": "Seattle",
+            "DeliverToOrganizationCode": "001",
+            "DestinationTypeCode": "EXPENSE",
+            "ItemDescription": item_description,
+            "LineType": "Goods",
+            "ProcurementBUName": "US1 Business Unit",
+           "Quantity": {
+                        "@unitCode": "zzu",
+                        "$": "1"
+                     },
+            "SourceAgreementNumber": source_agreement_number,
+            "SupplierItemNumber": supplier_item_number,
+            "SupplierContactName":supplier_contact_name,
+            "SupplierName":supplier_name,
+            "SupplierSiteName":supplier_site_name,
+            "RequestedDeliveryDate": "2017-06-15",
+            "Price": {
+              "@currencyCode": "USD",
+              "$": price
+            },
+            "UnitOfMeasure": "Ea",
+            "PurchaseRequestInputReqDistInterface":[ {
+              "ChargeAccountId": 300000047301445,
+              "Percent": 100
+            }
+			]
+          }
+		  ]
+        }
+		]
+      }
+				   }
+				   };
 	
 	
 console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
@@ -214,7 +210,7 @@ console.log("Request Payload is: "+JSON.stringify(OrderRequestElement));
 	
 	var options = {
 		headers: {
-         'Content-Type': 'text/xml'
+         'Content-Type': 'application/json'
     }
 	};
  
@@ -227,7 +223,7 @@ soap.createClient(url,options, function(err, client){
    client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
-  client.createRequisition(xmlRequest, function(err, result, body) {
+  client.createRequisition(OrderRequestElement, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
 	   parsestring(body, function(err, result){
