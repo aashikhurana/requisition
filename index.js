@@ -151,7 +151,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 	var xmlRequest=
-	'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/" xmlns:pur="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
+'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"xmlns:typ="http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/types/"xmlns:pur=http://xmlns.oracle.com/apps/prc/po/editDocument/purchaseRequestService/"> \n'+
    '<soapenv:Header/> \n'+
    '<soapenv:Body> \n'+
       '<typ:createRequisition>\n'+
@@ -162,9 +162,9 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 			'<typ:errorProcessingLevel>ALL</typ:errorProcessingLevel>\n'+				
 			'<typ:purchaseRequestPayload> \n'+
 				'<pur:Description>'+item_description+'</pur:Description> \n'+
-				'<pur:ApproverEmail>fap1966-casey.brown@oracleads.com</pur:ApproverEmail> \n'+
+				'<pur:ApproverEmail>fap1297-casey.brown@oracleads.com</pur:ApproverEmail> \n'+
 				'<pur:DocumentStatusCode>APPROVED</pur:DocumentStatusCode> \n'+
-				'<pur:PreparerEmail>fap1966-calvin.roth@oracleads.com</pur:PreparerEmail> \n'+ 
+				'<pur:PreparerEmail>fap1297-calvin.roth@oracleads.com</pur:PreparerEmail> \n'+ 
 				'<pur:RequisitioningBUName>US1 Business Unit</pur:RequisitioningBUName> \n'+
 				'<pur:ExternallyManagedFlag>FALSE</pur:ExternallyManagedFlag> \n'+			
 				'<pur:PurchaseRequestInputReqLineInterface> \n'+
