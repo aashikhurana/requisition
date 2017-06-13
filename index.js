@@ -149,6 +149,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
      price="7.99";
 	}
 	
+	
 	var  OrderRequestElement =   {
 		 "Header": null,
 				   "Body": {
@@ -158,14 +159,14 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
         "groupBy": "NONE",
         "maximumBatchSize": 2500,
         "errorProcessingLevel": "ALL",
-        "purchaseRequestPayload": {
+        "purchaseRequestPayload": [{
           "Description": item_description,
           "ApproverEmail": "fap1297-casey.brown@oracleads.com",
           "DocumentStatusCode": "APPROVED",
           "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
           "RequisitioningBUName": "US1 Business Unit",
           "ExternallyManagedFlag": "FALSE",
-          "PurchaseRequestInputReqLineInterface": {
+          "PurchaseRequestInputReqLineInterface": [{
             "CategoryName": category_name,
             "CurrencyCode": "USD",
             "DeliverToLocationCode": "Seattle",
@@ -189,12 +190,15 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
               "$": price
             },
             "UnitOfMeasure": "Ea",
-            "PurchaseRequestInputReqDistInterface": {
+            "PurchaseRequestInputReqDistInterface":[ {
               "ChargeAccountId": 300000047301445,
               "Percent": 100
             }
+			]
           }
+		  ]
         }
+		]
       }
 				   }
 				   };
