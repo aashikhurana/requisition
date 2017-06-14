@@ -156,46 +156,46 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 				     "interfaceSourceCode":"UK_F2F_Bot",
 						 "requisitioningBUName":"US1 Business Unit",
 						 "groupBy":"NONE",
-						 "maximumBatchSize": 2500,
+						 "maximumBatchSize":2500,
 						 "errorProcessingLevel":"ALL",
 						 "purchaseRequestPayload": 
 							{
 							   "ApproverEmail":"fap1297-casey.brown@oracleads.com",
 										
 							   "Description":item_description,
-							   "DocumentStatusCode": "APPROVED",
+							   "DocumentStatusCode":"APPROVED",
 							   
-							   "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
-							   "RequisitioningBUName": "US1 Business Unit",
-							   "ExternallyManagedFlag": false,
+							   "PreparerEmail":"fap1297-calvin.roth@oracleads.com",
+							   "RequisitioningBUName":"US1 Business Unit",
+							   "ExternallyManagedFlag":false,
 							   
 							   "PurchaseRequestInputReqLineInterface": 
 								  {
-									 "CategoryName": category_name,
-									 "CurrencyCode": "USD",
+									 "CategoryName":category_name,
+									 "CurrencyCode":"USD",
 									 "DeliverToLocationCode":"Seattle",
 									 "DeliverToOrganizationCode":"001",
 									 "DestinationTypeCode":"EXPENSE",
 									 
-									 "ItemDescription": item_description,
-									 "LineType": "Goods",
-									 "ProcurementBUName": "US1 Business Unit",
+									 "ItemDescription":item_description,
+									 "LineType":"Goods",
+									 "ProcurementBUName":"US1 Business Unit",
 									 "Quantity":{
                         "@unitCode": "zzu",
                         "$": "1"
                      },
-									 "SourceAgreementNumber": source_agreement_number,
-									 "SupplierItemNumber": supplier_item_number,
-									 "SupplierContactName": supplier_contact_name,
+									 "SourceAgreementNumber":source_agreement_number,
+									 "SupplierItemNumber":supplier_item_number,
+									 "SupplierContactName":supplier_contact_name,
 									 
-									 "SupplierName": supplier_name,
-									 "SupplierSiteName": supplier_site_name,
-									 "RequestedDeliveryDate": "2017-06-15",
+									 "SupplierName":supplier_name,
+									 "SupplierSiteName":supplier_site_name,
+									 "RequestedDeliveryDate":"2017-06-15",
 									 "Price": {
-										"@currencyCode": "USD",
-										"$": price
+										"@currencyCode":"USD",
+										"$":price
 									 },
-									 "UnitOfMeasure": "Ea",
+									 "UnitOfMeasure":"Ea",
 									 "PurchaseRequestInputReqDistInterface": 
 									   
 										{
