@@ -227,7 +227,7 @@ console.log("Request Payload is: "+JSON.stringify(newReq));
 	var options = {
 		headers: {
          'Content-Type': "application/soap+xml; charset=utf-8"
-    }
+    },
 	method:"POST"
 	};
  
