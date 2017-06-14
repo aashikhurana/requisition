@@ -152,8 +152,6 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	
 				   
 				   var newReq = {
-				   "Header": null,
-				   "Body": {
 					  "createRequisition": {
 						 "interfaceSourceCode":"UK_F2F_Bot",
 						 "requisitioningBUName":"US1 Business Unit",
@@ -216,8 +214,8 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 							
 						 
 					  }
-				   }
-				}
+				   };
+				
 	
 	
 console.log("Request Payload is: "+JSON.stringify(newReq));
@@ -226,7 +224,7 @@ console.log("Request Payload is: "+JSON.stringify(newReq));
 	
 	var options = {
 		headers: {
-         'contentType': "application/json"
+         'Content-Type': 'application/json;charset="UTF-8"'
     },
 	method:"POST"
 	};
