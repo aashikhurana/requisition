@@ -8,6 +8,10 @@ var http = require('http');
 
 var qs = require('querystring');
 
+var soap=require('soap');
+
+var parsestring=require('xml2js').parseString;
+
 //restService.use(bodyParser.urlencoded({
     //extended: true
 //}));
@@ -40,10 +44,11 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var speech="";
 	
 	var requisition_id=" ";
+	var OrderRequestElement=" ";
 	
-	var postheaders = {
-    'Content-Type' : 'application/json'
-};
+var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseRequest/PurchaseRequestService?WSDL';
+
+	
 	
 	
 	if(user_request == 'place_order'){
@@ -53,11 +58,11 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	if(order_item=='PEN'){
 		console.log("Inside pen")
 		
-		    category_name= "Pens and Pencils";
+		    category_name="Pens and Pencils";
             source_agreement_number="52172";
 		    supplier_contact_name="Gasol, Jim";
-            supplier_name= "Office Depot";
-            supplier_site_name= "OD US1";
+            supplier_name="Office Depot";
+            supplier_site_name="OD US1";
             price="3.60";
 			
 		if(order_color=='black'){
@@ -140,74 +145,139 @@ restService.post('/echo', json_body_parser, function(req, res) {
      category_name= "Copy Paper";
      source_agreement_number="52172";
      supplier_item_number="SI-18";
-     supplier_contact_name="Gasol, Jim";
+     supplier_contact_name="Gasol,Jim";
      supplier_name= "Office Depot";
      supplier_site_name= "OD US1";
      price="7.99";
 	}
 	
+				   
+				   var newReq ={ 
+				     "interfaceSourceCode":"UK_F2F_Bot",
+						 "requisitioningBUName":"US1 Business Unit",
+						 "groupBy":"NONE",
+						 "maximumBatchSize": 2500,
+						 "errorProcessingLevel":"ALL",
+						 "purchaseRequestPayload": 
+							{
+							   "ApproverEmail":"fap1297-casey.brown@oracleads.com",
+										
+							   "Description":item_description,
+							   "DocumentStatusCode": "APPROVED",
+							   
+							   "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
+							   "RequisitioningBUName": "US1 Business Unit",
+							   "ExternallyManagedFlag": false,
+							   
+							   "PurchaseRequestInputReqLineInterface": 
+								  {
+									 "CategoryName": category_name,
+									 "CurrencyCode": "USD",
+									 "DeliverToLocationCode":"Seattle",
+									 "DeliverToOrganizationCode":"001",
+									 "DestinationTypeCode":"EXPENSE",
+									 
+									 "ItemDescription": item_description,
+									 "LineType": "Goods",
+									 "ProcurementBUName": "US1 Business Unit",
+									 "Quantity":{
+                        "@unitCode": "zzu",
+                        "$": "1"
+                     },
+									 "SourceAgreementNumber": source_agreement_number,
+									 "SupplierItemNumber": supplier_item_number,
+									 "SupplierContactName": supplier_contact_name,
+									 
+									 "SupplierName": supplier_name,
+									 "SupplierSiteName": supplier_site_name,
+									 "RequestedDeliveryDate": "2017-06-15",
+									 "Price": {
+										"@currencyCode": "USD",
+										"$": price
+									 },
+									 "UnitOfMeasure": "Ea",
+									 "PurchaseRequestInputReqDistInterface": 
+									   
+										{
+										   "ChargeAccountId": 300000047301445,
+										   "Percent": 100
+										   
+										}
+									 
+									
+								  }
+								  
+								  
+							   
+							}
+							
+							
+					
+				   };
+				
 	
-	var request_payload={
-        "CategoryName": category_name,
-        "ItemDescription": item_description,
-        "SourceAgreementNumber": source_agreement_number,
-        "SupplierItemNumber": supplier_item_number,
-        "SupplierContactName": supplier_contact_name,
-        "SupplierName": supplier_name,
-        "SupplierSiteName": supplier_site_name,
-        "Price": price
-        };
 	
-        console.log("Request Payload is: "+request_payload);
+console.log("Request Payload is: "+JSON.stringify(newReq));
+
 	  
-   var optionspost = {
-    host : '10.178.23.13',
-    port : 7101,
-    path : '/requisition-context-root/resources/procws/requisitionBot?'+qs.stringify(request_payload),
-    method : 'POST',
-    headers : postheaders
-};
+	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
+	
+	var options = {
+		headers: {
+         'Content-Type': 'application/json;charset="UTF-8"'
+    },
+	method:"POST"
+	};
+ 
+console.info('Do the SOAP call');
 
-console.info('Options prepared:');
-console.info(optionspost);
-console.info('Do the POST call');
-
-// do the POST call
-var req = http.request(optionspost, function(res) {
-   console.log('Status: ' + res.statusCode);
-  console.log('Headers: ' + JSON.stringify(res.headers));
-  //res.setEncoding('utf8');
-  res.on('data', function (body) {
-    console.log('Body: ' + body);
-  });
-  speech="Thank you for Requisition Bot service. Your request for"+order_item+"has been raised";
-  });
-req.on('socket', function (socket) {
-    socket.setTimeout(600000);  
-    socket.on('timeout', function() {
-        req.abort();
-    });
+soap.createClient(url,options,function(err, client){
+	
+	if(!err){
+		console.log("Setting security");
+   client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
+  // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
+  console.log('Calling Webservice');
+  client.createRequisition(newReq, function(err, result, body) {
+	  if(!err){
+	  console.log(body);
+	   parsestring(body, function(err, result){
+    // Get The Result From The Soap API and Parse it to JSON
+	if(!err){
+    var requestResult = result['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0].createRequisitionResponse[0].return[0];
+    console.log(requestResult);
+	speech="Thank you for using requisition BOt. Your Id is"+requestResult;
+	}else{
+		console.log("There was some error in generating id."+err.message);
+		console.log(err.stack);
+		speech="There was some error in generating id.";
+  }
+	  });
+	  }
+	  else{
+		  console.log("There was some error in registering data  "+err.message);
+		  console.log(err.stack);
+		  speech="There was some error in registering data";
+	  }
+	});
+   }else{
+	   console.log(err.message);
+   }
+   
 });
-req.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
-  speech="There is an error in the bot service";
-});
-// write data to request body
-req.write('{"string": "Hello, World"}');
-req.end();
- return res.json({
+return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
 
 }
-	
-	
-});
 
+});
 
 
 restService.listen((process.env.PORT || 5000), function() {
     console.log("Server up and listening");
 });
+	
+	
