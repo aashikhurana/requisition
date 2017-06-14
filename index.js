@@ -152,79 +152,65 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	}
 	
 				   
-				   var newReq ={ 
-				     "interfaceSourceCode":"UK_F2F_Bot",
-						 "requisitioningBUName":"US1 Business Unit",
-						 "groupBy":"NONE",
-						 "maximumBatchSize":2500,
-						 "errorProcessingLevel":"ALL",
-						 "purchaseRequestPayload": 
-							{
-							   "ApproverEmail":"fap1297-casey.brown@oracleads.com",
-										
-							   "Description":item_description,
-							   "DocumentStatusCode":"APPROVED",
-							   
-							   "PreparerEmail":"fap1297-calvin.roth@oracleads.com",
-							   "RequisitioningBUName":"US1 Business Unit",
-							   "ExternallyManagedFlag":false,
-							   
-							   "PurchaseRequestInputReqLineInterface": 
-								  {
-									 "CategoryName":category_name,
-									 "CurrencyCode":"USD",
-									 "DeliverToLocationCode":"Seattle",
-									 "DeliverToOrganizationCode":"001",
-									 "DestinationTypeCode":"EXPENSE",
-									 
-									 "ItemDescription":item_description,
-									 "LineType":"Goods",
-									 "ProcurementBUName":"US1 Business Unit",
-									 "Quantity":{
-                        "@unitCode": "zzu",
-                        "$": "1"
-                     },
-									 "SourceAgreementNumber":source_agreement_number,
-									 "SupplierItemNumber":supplier_item_number,
-									 "SupplierContactName":supplier_contact_name,
-									 
-									 "SupplierName":supplier_name,
-									 "SupplierSiteName":supplier_site_name,
-									 "RequestedDeliveryDate":"2017-06-15",
-									 "Price": {
-										"@currencyCode":"USD",
-										"$":price
-									 },
-									 "UnitOfMeasure":"Ea",
-									 "PurchaseRequestInputReqDistInterface": 
-									   
-										{
-										   "ChargeAccountId": 300000047301445,
-										   "Percent": 100
-										   
-										}
-									 
-									
-								  }
-								  
-								  
-							   
-							}
-							
-							
-					
-				   };
-				
+var orderxmlpayload= '<createRequisition>'+
+         '<interfaceSourceCode>UK_F2F_Bot</interfaceSourceCode>'+
+         '<requisitioningBUName>US1 Business Unit</requisitioningBUName>'+
+         '<groupBy>NONE</groupBy>'+
+         '<maximumBatchSize>2500</maximumBatchSize>'+
+         '<errorProcessingLevel>ALL</errorProcessingLevel>'+
+         '<purchaseRequestPayload>'+
+            '<Description>Ladder with Right Handrail</Description>'+
+            '<ApproverEmail>fap1297-casey.brown@oracleads.com</ApproverEmail>'+
+            '<DocumentStatusCode>APPROVED</DocumentStatusCode>'+
+            '<PreparerEmail>fap1297-calvin.roth@oracleads.com</PreparerEmail>'+
+            '<RequisitioningBUName>US1 Business Unit</RequisitioningBUName>'+
+            '<ExternallyManagedFlag>FALSE</ExternallyManagedFlag>'+
+            '<PurchaseRequestInputReqLineInterface>'+
+               '<CategoryName>Pens and Pencils</CategoryName>'+
+               '<CurrencyCode>USD</CurrencyCode>'+
+               '<DeliverToLocationCode>Seattle</DeliverToLocationCode>'+
+               '<DeliverToOrganizationCode>001</DeliverToOrganizationCode>'+
+               '<DestinationTypeCode>EXPENSE</DestinationTypeCode>'+
+               '<ItemDescription>Round Stic Ball Point Pen, Fine, Blue</ItemDescription>'+
+               '<LineType>Goods</LineType>'+
+               '<ProcurementBUName>US1 Business Unit</ProcurementBUName>'+
+               '<Quantity>1</Quantity>'+
+               '<SourceAgreementNumber>52172</SourceAgreementNumber>'+
+               '<SupplierItemNumber>BIC20130</SupplierItemNumber>'+
+               '<SupplierContactName>Gasol, Jim</SupplierContactName>'+
+               '<SupplierName>Office Depot</SupplierName>'+
+               '<SupplierSiteName>OD US1</SupplierSiteName>'+
+               '<RequestedDeliveryDate>2017-06-16</RequestedDeliveryDate>'+
+               '<Price currencyCode="USD">2</Price>'+
+               '<UnitOfMeasure>Ea</UnitOfMeasure>'+
+               '<PurchaseRequestInputReqDistInterface>'+
+                  '<ChargeAccountId>300000047301445</ChargeAccountId>'+
+                  '<Percent>100</Percent>'+
+               '</PurchaseRequestInputReqDistInterface>'+
+            '</PurchaseRequestInputReqLineInterface>'+
+         '</purchaseRequestPayload>'+
+      '</createRequisition>';
+
+	  
+	  
+ 
+	var xmltojsonpayload= " ";  
 	
 	
-console.log("Request Payload is: "+JSON.stringify(newReq));
+console.log("Request Payload is: "+JSON.stringify(xmltojsonpayload));
+
+parsestring(orderxmlpayload, function (err, result) {
+    console.dir(result);
+	xmltojsonpayload=result;
+	
+});
 
 	  
 	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
 	
 	var options = {
 		headers: {
-         'Content-Type': 'application/json;charset="UTF-8"'
+         'Content-Type':'application/json;charset="UTF-8"'
     },
 	method:"POST"
 	};
@@ -238,7 +224,7 @@ soap.createClient(url,options,function(err, client){
    client.setSecurity(new soap.BasicAuthSecurity('calvin.roth', 'wxI69587'));
   // The Client now has all the methods of the WSDL. Use it to create a new order by feeding it the JSON Payload
   console.log('Calling Webservice');
-  client.createRequisition(newReq, function(err, result, body) {
+  client.createRequisition(xmltojsonpayload, function(err, result, body) {
 	  if(!err){
 	  console.log(body);
 	   parsestring(body, function(err, result){
