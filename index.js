@@ -155,16 +155,16 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 				   "Header": null,
 				   "Body": {
 					  "createRequisition": {
-						 "interfaceSourceCode": "UK_F2F_Bot",
-						 "requisitioningBUName": "US1 Business Unit",
-						 "groupBy": "NONE",
+						 "interfaceSourceCode":"UK_F2F_Bot",
+						 "requisitioningBUName":"US1 Business Unit",
+						 "groupBy":"NONE",
 						 "maximumBatchSize": 2500,
-						 "errorProcessingLevel": "ALL",
+						 "errorProcessingLevel":"ALL",
 						 "purchaseRequestPayload": 
 							{
-							   "ApproverEmail": "fap1297-casey.brown@oracleads.com",
+							   "ApproverEmail":"fap1297-casey.brown@oracleads.com",
 										
-							   "Description": item_description,
+							   "Description":item_description,
 							   "DocumentStatusCode": "APPROVED",
 							   
 							   "PreparerEmail": "fap1297-calvin.roth@oracleads.com",
@@ -175,9 +175,9 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 								  {
 									 "CategoryName": category_name,
 									 "CurrencyCode": "USD",
-									 "DeliverToLocationCode": "Seattle",
-									 "DeliverToOrganizationCode": "001",
-									 "DestinationTypeCode": "EXPENSE",
+									 "DeliverToLocationCode":"Seattle",
+									 "DeliverToOrganizationCode":"001",
+									 "DestinationTypeCode":"EXPENSE",
 									 
 									 "ItemDescription": item_description,
 									 "LineType": "Goods",
@@ -226,7 +226,7 @@ console.log("Request Payload is: "+JSON.stringify(newReq));
 	
 	var options = {
 		headers: {
-         'Content-Type': "application/soap+xml; charset=utf-8"
+         'contentType': "application/json"
     },
 	method:"POST"
 	};
