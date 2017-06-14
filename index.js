@@ -11,6 +11,8 @@ var qs = require('querystring');
 var soap=require('soap');
 
 var parsestring=require('xml2js').parseString;
+
+var parsexml=require('js2xml');
 //restService.use(bodyParser.urlencoded({
     //extended: true
 //}));
@@ -152,7 +154,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 	
 				   
 				   var newReq ={ 
-				   "createRequisition": { 
+				   
 						 "interfaceSourceCode":"UK_F2F_Bot",
 						 "requisitioningBUName":"US1 Business Unit",
 						 "groupBy":"NONE",
@@ -212,13 +214,15 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 							}
 							
 							
-						 
-					  }
+					
 				   };
 				
 	
 	
 console.log("Request Payload is: "+JSON.stringify(newReq));
+
+
+console.log("converting json to xml: "+parsexml.parse("createRequisition", newReq));
 	  
 	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
 	
