@@ -154,7 +154,7 @@ var url = 'https://ucf6-fap1297-prc.oracledemos.com/prcPoEditDocumentPurchaseReq
 				   
 var orderxmlpayload= '<createRequisition>'+
          '<interfaceSourceCode>UK_F2F_Bot</interfaceSourceCode>'+
-         '<requisitioningBUName>US1 Business Unit</requisitioningBUName>'+
+         '<requisitioningBUName>US1BusinessUnit</requisitioningBUName>'+
          '<groupBy>NONE</groupBy>'+
          '<maximumBatchSize>2500</maximumBatchSize>'+
          '<errorProcessingLevel>ALL</errorProcessingLevel>'+
@@ -197,7 +197,7 @@ var orderxmlpayload= '<createRequisition>'+
 	var xmltojsonpayload= " ";  
 	
 	
-console.log("Request Payload is: "+JSON.stringify(xmltojsonpayload));
+
 
 parsestring(orderxmlpayload, function (err, result) {
     console.dir(result);
@@ -205,8 +205,10 @@ parsestring(orderxmlpayload, function (err, result) {
 	
 });
 
+console.log("Request Payload is: "+JSON.stringify(xmltojsonpayload));
+
 	  
-	speech="Your request for "+order_item+" has been raised and under process. Please wait for requisition Id";
+speech="Thank you for ordering Solar Panel with us. It will be delivered to by 15th july 2017."
 	
 	var options = {
 		headers: {
