@@ -21,7 +21,7 @@ var json_body_parser = bodyParser.json();
 
 
 
-restService.post('/mockup', json_body_parser, function(req, res) {
+restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Inside Web service call");
 	
 	
