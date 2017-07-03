@@ -32,42 +32,32 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var order_item_1=req.body.result.parameters.order_items1;
 	var address=req.body.result.parameters.order-address;
 	var order_color=req.body.result.parameters.color;
-	var order_yes=req.body.result.parameters.order_yes_no;
+	var delivery_confirmation=req.body.result.parameters.delivery_confirmation;
+	var address_confirm=req.body.result.parameters.address_confirmation;
+	
+	var order_confirmation=req.body.result.parameters.order_confirmation;
+	
 	
 	var speech="";
+	console.log(order_item_1);
 	
-	if(order_item==='Solar Panel'){
-	
-	  speech='lets see we have Solar Panel 0605 in stock with us. Should I go ahead and place the order for you?';
 	  
-	  if(order_yes==='Yes'){
+	  if(order_confirmation==='Yes place the order'){
+	   if(delivery_confirmation==='yes please go ahead'){
+		    if(address_confirm==='Yes it is'){
+				 speech='Thank you for ordering with us. Your order OD507295 for Solar panel 0605 has been placed and is being processed. You can expect delivered by'+ '17th July 2017.';
+			}else{
+				speech='Please contact our customer care to change your address.';
+			}
+	   }else{
+		   speech='Sorry we do not deliver panels at home or office address';
+	   }
 	  
-	  speech='should i get it delivered at your office address?';
-	  
-	  if(order_yes==='Yes'){
-	  
-	  speech='Please confirm your office address. Is it Blumberger Damm 2, 12683 Berlin?'
-	  
-	  if(order_yes==='Yes'){
-	  
-	  speech='Thank you for ordering with us. Your order OD507295 for Solar panel 0605 has been placed and is being processed. You can expect delivery by 17th July 2017.'
 	  }else{
-	  speech='Thank you for shopping with us.';
-	  }
-	  }else{
-	  speech='Thank you for shopping with us.';
+		  speech="Sorry, Our panels are of commercial use only. Thank you for shopping with us.";
 	  }
 	  
 	  
-	  }else{
-	  speech='Thank you for shopping with us.';
-	  }
-	  
-	  
-	
-	}else{
-	speech='Thank you for shopping with us.';
-	}
 
 return res.json({
         speech: speech,
