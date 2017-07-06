@@ -37,9 +37,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	var order_confirmation=req.body.result.parameters.order_confirmation;
 	
-	
+	console.log("item is:"+order_item);
 	var speech="";
-	console.log(order_item==='Solar Panel'){
+	if(order_item==='Solar Panel'){
 	 
 	 speech='We have Solar Panel 0605 in stock. should i place an order for you?';
 	  if(order_confirmation==='Yes place the order'){
