@@ -40,33 +40,35 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("item is:"+order_item);
 	var speech="";
 	if(order_item==='Solar Panel'){
-	 
-	 speech='We have Solar Panel 0605 in stock. should i place an order for you?';
+	 speech="We have Solar Panel 0605 in stock. should i place an order for you?";
+
 	  if(order_confirmation==='Yes place the order'){
 		  speech="Do you want to get it delivered at your plant?";
 	   if(delivery_confirmation==='yes please go ahead'){
-		   speech='Please confirm your address is it  Blumberger Damm 2, 12683 Berlin, Germany?';
+		   speech="Please confirm your address is it  Blumberger Damm 2, 12683 Berlin, Germany?";
 		    if(address_confirm==='Yes it is'){
-				 speech='Thank you for ordering with us. Your order OD507295 for Solar panel 0605 has been placed and is being processed. You can expect delivery by 17th July 2017.';
+				 speech="Thank you for ordering with us. Your order OD507295 for Solar panel 0605 has been placed and is being processed. You can expect delivery by 17th July 2017.";
 			}else{
-				speech='Please contact our customer care to change your address. Thank you for shopping with us.';
+				speech="Please contact our customer care to change your address. Thank you for shopping with us.";
 			}
 	   }else{
-		   speech='Sorry we do not deliver panels at home or office address. Thank you for shopping with us.';
+		   speech="Sorry we do not deliver panels at home or office address. Thank you for shopping with us.";
 	   }
 	  
 	  }else{
 		  speech="Sorry, Our panels are of commercial use only. Thank you for shopping with us.";
 	  }
-	}
 	  
-	  
-
-return res.json({
+	  	 return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
+	}
+	  
+	  
+
+
 
 });
 
