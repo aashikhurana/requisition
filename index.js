@@ -44,7 +44,6 @@ restService.post('/echo', json_body_parser, function(req, res) {
         displayText: speech,
         source: 'webhook-echo-sample'
 });
-	}
 	  
 	  
 
