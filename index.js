@@ -29,7 +29,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
     var od_confirm=req.body.result.parameters.Order_confirm;
 	
 	
-	console.log("item confirmation is:"+Order_confirm);
+	console.log("item confirmation is:"+od_confirm);
 	var speech="";
 	if(od_confirm==='Yes'){
 		console("Inside if block");
