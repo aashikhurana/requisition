@@ -36,7 +36,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 speech="Please select an activity from below: 1. Order Status 2. Place Order";
 	}
 	else{
-	      speech="Thank You and Have a Nice Day Chris.";
+	      speech="Thank You and Have a Nice Day Robert.";
 	}
 	  
 	  	 return res.json({
