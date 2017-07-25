@@ -104,11 +104,13 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
 	}
 	else{
-	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to place a new order or exit?";
+	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to place order for new item or exit?";
 	}
 	
 	if(pap_conf==='yes'){
 		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
+	}else{
+		speech="Sorry we do not have other forms of paper with us. would you like to place order for new item or exit?";
 	}
 	  
 	  	 return res.json({
