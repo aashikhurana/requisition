@@ -34,6 +34,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var pen_color=req.body.result.parameters.pen_color;
 	var notebooktype=req.body.result.parameters.type_notebook;
 	var pap_conf=req.body.result.parameters.Paper_confirm;
+	var speech="There is some error with bot";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
