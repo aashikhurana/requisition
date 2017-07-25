@@ -30,8 +30,11 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(JSON.stringify(req.body.result));
 	
     var type_order=req.body.result.parameters.selection_type;
+	console.log(type_order);
 	var item_order=req.body.result.parameters.Items;
+	console.log(item_order);
 	var pen_color=req.body.result.parameters.pen_color;
+	console.log(pen_color);
 	var notebooktype=req.body.result.parameters.type_notebook;
 	var pap_conf=req.body.result.parameters.Paper_confirm;
 	var speech="There is some error with bot";
@@ -40,17 +43,8 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
-	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.";
-	}
-	
-	if(type_order==='Check Status'){
-	 speech="Please tell me your Order ID";
-	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.";
-	}
-	
-	if(item_order==='Pen'){
+	 
+	 if(item_order==='Pen'){
 	  
 	  speech="We have blue and black pens with us which one would you like to place order for."
 	  
@@ -110,15 +104,29 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	if(pap_conf==='yes'){
 		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
-	}else{
+	}
+	
+	if(pap_conf==='no'){
 		speech="Sorry we do not have other forms of paper with us. would you like to place order for new item or exit?";
 	}
-	  
-	  	 return res.json({
+	return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
+	}else{
+	   speech="Input is not valid. Please select from place a new order or Check Status.";
+	}
+	
+	if(type_order==='Check Status'){
+	 speech="Please tell me your Order ID";
+	}else{
+	   speech="Input is not valid. Please select from place a new order or Check Status.";
+	}
+	
+	
+	  
+	  	 
 	  
 	  });
 
