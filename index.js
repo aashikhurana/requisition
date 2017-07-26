@@ -41,7 +41,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
-	if(!type_order==='undefined'){
+	if(type_order !== 'undefined'){
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
@@ -52,7 +52,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-	if(!item_order==='undefined'){
+	if(item_order!=='undefined'){
 			 if(item_order==='Pen'){
 	  
 	  speech="We have blue and black pens with us which one would you like to place order for."
@@ -62,7 +62,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	   speech="Input is not valid. Please Chose one of the items from Pen,Paper,Stapler,Notebook";
 	}
 	
-	if(item_order==='Paper'){
+	if(item_order=='Paper'){
 	  speech="Currently A4 Size paper is available should I go ahead and place order for you?";
 	}
 	else{
@@ -84,7 +84,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-if(!pen_color==='undefined'){
+if(pen_color!=='undefined'){
 	
 	if(pen_color==='Black'){
 	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
@@ -101,7 +101,7 @@ if(!pen_color==='undefined'){
 	}
 }
 
-if(!notebooktype==='undefined'){
+if(notebooktype!=='undefined'){
 	
 	if(notebooktype==='hardbound'){
 	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime;
@@ -119,7 +119,7 @@ if(!notebooktype==='undefined'){
 	
 }
 
-if(!pap_conf==='undefined'){
+if(pap_conf!=='undefined'){
 	
 	if(pap_conf==='yes'){
 		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
