@@ -41,6 +41,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
+	if(!type_order==='undefined'){
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
@@ -48,6 +49,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 speech="Please tell me your Order ID";
 	}else{
 	   speech="Input is not valid. Please select from place a new order or Check Status.";
+	}
 	}
 	 
 	if(!item_order==='undefined'){
