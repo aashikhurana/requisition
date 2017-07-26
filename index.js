@@ -28,7 +28,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	
 	console.log(JSON.stringify(req.body.result));
-	
+	var action=req.body.result.action;
     var type_order=req.body.result.parameters.selection_type;
 	console.log(type_order);
 	var item_order=req.body.result.parameters.Items;
@@ -38,10 +38,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var notebooktype=req.body.result.parameters.type_notebook;
 	console.log(notebooktype);
 	var pap_conf=req.body.result.parameters.Paper_confirm;
+	var exit_contx=req.body.result.parameters.exit_context;
 	var speech="There is some error with bot";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
+	if(action==='new_order'){
 	if(type_order){
 		console.log("inside type order");
 	if(type_order==='New order'){
@@ -71,10 +73,10 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 
 if(pen_color){
 	
-	if(pen_color==='Black'){
-	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
-	}else if(pen_color==='Blue'){
-	  speech="Your order with ID 91123 has been confirmed and will be delivered to you by "+datetime;
+	if(pen_color==='black'){
+	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+	}else if(pen_color==='blue'){
+	  speech="Your order with ID 91123 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}
 	else{
 	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to place a new order or exit?";
@@ -86,9 +88,9 @@ if(notebooktype){
 	console.log("inside notebook type");
 	
 	if(notebooktype==='hardbound'){
-	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime;
+	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else if(notebooktype==='Spiral'){
-	speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
+	speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}
 	else{
 	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to place order for new item or exit?";
@@ -99,7 +101,7 @@ if(notebooktype){
 if(pap_conf){
 	
 	if(pap_conf==='yes'){
-		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
+		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else if(pap_conf==='no'){
 		speech="Sorry we do not have other forms of paper with us. would you like to place order for new item or exit?";
 	}else{
@@ -107,7 +109,15 @@ if(pap_conf){
 	}
 }
 	
-	
+	}
+
+if(action==='quit'){
+	if(exit_contx==='exit'){
+	speech="Thank You for shopping with us have a great day ahead !!";
+	}else if(pap_conf==='no'){
+		speech="Thank You for shopping with us have a great day ahead !!";
+	}
+}
 	
 	
 	
