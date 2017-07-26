@@ -33,7 +33,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(type_order);
 	var item_order=req.body.result.parameters.Items;
 	console.log(item_order);
-	var pen_color=req.body.result.parameters.pen_color;
+	var pen_color=req.body.result.parameters.Pen_color;
 	console.log(pen_color);
 	var notebooktype=req.body.result.parameters.type_notebook;
 	console.log(notebooktype);
