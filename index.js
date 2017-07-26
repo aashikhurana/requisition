@@ -37,6 +37,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(pen_color);
 	var notebooktype=req.body.result.parameters.type_notebook;
 	var pap_conf=req.body.result.parameters.Paper_confirm;
+	var order_id=
 	var speech="There is some error with bot";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
@@ -44,7 +45,14 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
-	 if(item_order==='Pen'){
+	 }else if(type_order==='Check Status'){
+	 speech="Please tell me your Order ID";
+	}else{
+	   speech="Input is not valid. Please select from place a new order or Check Status.";
+	}
+	 
+	if(!item_order==='undefined'){
+			 if(item_order==='Pen'){
 	  
 	  speech="We have blue and black pens with us which one would you like to place order for."
 	  
@@ -73,6 +81,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	else{
 	 speech="Input is not valid. Please Chose one of the items from Pen,Paper,Stapler,Notebook";
 	}
+	}
+	 
+if(!pen_color==='undefined'){
 	
 	if(pen_color==='Black'){
 	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
@@ -87,6 +98,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	else{
 	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to place a new order or exit?";
 	}
+}
+
+if(!notebooktype==='undefined'){
 	
 	if(notebooktype==='hardbound'){
 	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime;
@@ -102,6 +116,10 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to place order for new item or exit?";
 	}
 	
+}
+
+if(!pap_conf==='undefined'){
+	
 	if(pap_conf==='yes'){
 		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
 	}
@@ -109,20 +127,19 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	if(pap_conf==='no'){
 		speech="Sorry we do not have other forms of paper with us. would you like to place order for new item or exit?";
 	}
+}
+	
+	
+	
+	
+	
+
+	
 	return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
 });
-	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.";
-	}
-	
-	if(type_order==='Check Status'){
-	 speech="Please tell me your Order ID";
-	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.";
-	}
 	
 	
 	  
