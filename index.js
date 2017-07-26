@@ -36,12 +36,13 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var pen_color=req.body.result.parameters.pen_color;
 	console.log(pen_color);
 	var notebooktype=req.body.result.parameters.type_notebook;
+	console.log(notebooktype);
 	var pap_conf=req.body.result.parameters.Paper_confirm;
 	var speech="There is some error with bot";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
-	if(!type_order){
+	if(type_order){
 		console.log("inside type order");
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
@@ -53,7 +54,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-	if(!item_order){
+	if(item_order){
 			 if(item_order==='Pen'){
 	  
 	  speech="We have blue and black pens with us which one would you like to place order for."
@@ -85,7 +86,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-if(!pen_color){
+if(pen_color){
 	
 	if(pen_color==='Black'){
 	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime;
@@ -102,7 +103,7 @@ if(!pen_color){
 	}
 }
 
-if(!notebooktype){
+if(notebooktype){
 	
 	console.log("inside notebook type");
 	
@@ -122,7 +123,7 @@ if(!notebooktype){
 	
 }
 
-if(!pap_conf){
+if(pap_conf){
 	
 	if(pap_conf==='yes'){
 		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime;
