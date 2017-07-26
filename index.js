@@ -42,6 +42,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Today's date:"+datetime);
 	
 	if(!type_order){
+		console.log("inside type order");
 	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
@@ -102,6 +103,8 @@ if(!pen_color){
 }
 
 if(!notebooktype){
+	
+	console.log("inside notebook type");
 	
 	if(notebooktype==='hardbound'){
 	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime;
