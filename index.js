@@ -55,7 +55,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 }else if(type_order==='Check Status'){
 	 speech="Please enter your Order ID";
 	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.";
+	   speech="Input is not valid. Please select from place a new order or Check Status.b would you like to continue?";
 	}
 	}
 	 
@@ -67,9 +67,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}else if(item_order==='notebook'){
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
-	  speech="Your order with ID 5075 has been confirmed and will be delivered to you by "+datetime;
+	  speech="Your order with id 5075 has been confirmed and will be delivered to you by "+datetime;
 	}else{
-		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook";
+		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
 	}
 	
 	}
@@ -77,12 +77,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
 if(pen_color){
 	
 	if(pen_color==='black'){
-	  speech="Your order with ID 7865 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+	  speech="Your order with id 7865 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else if(pen_color==='blue'){
-	  speech="Your order with ID 91123 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+	  speech="Your order with id 91123 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}
 	else{
-	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to place a new order or exit?";
+	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to continue?";
 	}
 }
 
@@ -91,12 +91,12 @@ if(notebooktype){
 	console.log("inside notebook type");
 	
 	if(notebooktype==='hardbound'){
-	speech="Your order with ID 5421 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+	speech="Your order with id 5421 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else if(notebooktype==='Spiral'){
-	speech="Your order with ID 7114 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+	speech="Your order with id 7114 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}
 	else{
-	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to place order for new item or exit?";
+	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to continue?";
 	}
 	
 }
@@ -104,13 +104,14 @@ if(notebooktype){
 if(pap_conf){
 	
 	if(pap_conf==='yes'){
-		speech="Your order with ID 8954 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
+		speech="Your order with id 8954 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else if(pap_conf==='no'){
-		speech="Sorry we do not have other forms of paper with us. would you like to place order for new item or exit?";
+		speech="Sorry we do not have other forms of paper with us. would you like to continue?";
 	}else{
 		speech="Sorry please select from Yes or No";
 	}
 }
+	
 
 if(order_id){
 
@@ -135,15 +136,9 @@ if(order_id==='5075'){
 	 speech="Sorry! your order with id"+order_id+" doesnot exist in our records.Is there something else i can help you with?";
 	
 }}
+	
 
-if(exit_contx){
-if(exit_contx==='exit'){
-speech="Thank You for shopping with us have a great day ahead !!";
-}
-}
-	
-}
-	
+	}
 	
 
 	
