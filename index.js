@@ -55,15 +55,15 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 }else if(type_order==='Check Status'){
 	 speech="Please enter your Order ID";
 	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status.b would you like to continue?";
+	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue?";
 	}
 	}
 	 
 	if(item_order){
 			 if(item_order==='Pen'){
-	  speech="We have blue and black pens with us which one would you like to place order for."
+	  speech="We have blue and black pens with us which one would you like to place order for?"
 	}else if(item_order=='Paper'){
-	  speech="Currently A4 Size paper is available should I go ahead and place order for you?";
+	  speech="We have A4 and A3 size papers with us which one would you like to place order for?";
 	}else if(item_order==='notebook'){
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
@@ -103,10 +103,10 @@ if(notebooktype){
 
 if(pap_conf){
 	
-	if(pap_conf==='yes'){
+	if(pap_conf==='A4'){
 		speech="Your order with id 8954 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
-	}else if(pap_conf==='no'){
-		speech="Sorry we do not have other forms of paper with us. would you like to continue?";
+	}else if(pap_conf==='A3'){
+		speech="Your order with id 1229 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else{
 		speech="Sorry please select from Yes or No";
 	}
@@ -132,7 +132,11 @@ if(order_id==='5075'){
 }else if(order_id==='8954')
 {
 	speech="Your order for pack of  A4 Size papers has been dispatched and is on it's way .Is there something else i can help you with?";
-}else{
+}else if(order_id==='1229')
+{
+	speech="Your order for pack of  A3 Size papers has been dispatched and is on it's way .Is there something else i can help you with?";
+}
+else{
 	 speech="Sorry! your order with id"+order_id+" doesnot exist in our records.Is there something else i can help you with?";
 	
 }}
