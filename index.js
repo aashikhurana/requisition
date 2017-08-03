@@ -67,7 +67,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}else if(item_order==='notebook'){
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
-	  speech="Your order with id 5075 has been confirmed and will be delivered to you by "+datetime;
+	  speech="Your order with id 5075 has been confirmed and will be delivered to you by "+datetime+"Is there anything else I can help you with?";
 	}else{
 		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
 	}
