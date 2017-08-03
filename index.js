@@ -42,7 +42,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(exit_contx);
 	var order_id=req.body.result.parameters.OrderId;
 	console.log(exit_contx);
-	var speech="There is some error with bot";
+	var speech="There was some error with the bot. would you still like to proceed?";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime);
 	
