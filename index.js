@@ -29,7 +29,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	console.log(JSON.stringify(req.body.result));
 	var action=req.body.result.action;
-    var type_order=req.body.result.parameters.selection_type;
+    var type_order=req.body.result.parameters.selection_type[0];
 	console.log(type_order);
 	var item_order=req.body.result.parameters.Items;
 	console.log(item_order);
