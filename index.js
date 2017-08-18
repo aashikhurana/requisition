@@ -29,9 +29,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	
 	console.log(JSON.stringify(req.body.result));
 	var action=req.body.result.action;
-    var type_order=req.body.result.parameters.selection_type;
+    var type_order=req.body.result.contexts.parameters.selection_type.original;
 	console.log(type_order);
-	var item_order=req.body.result.parameters.Items;
+	var item_order=req.body.result.contexts.parameters.Items.original;
 	console.log(item_order);
 	var pen_color=req.body.result.parameters.Pen_color;
 	console.log(pen_color);
@@ -49,7 +49,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	if(action==='new_order'){
 	if(type_order){
 		console.log("inside type order");
-	if(type_order===[ 'New order' ]){
+	if(type_order==='New order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
 	 }else if(type_order==='Check Status'){
