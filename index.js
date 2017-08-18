@@ -49,7 +49,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	if(action==='new_order'){
 	if(type_order){
 		console.log("inside type order");
-	if(type_order===  [ 'New order' ]){
+	if(type_order===[ 'New order' ]){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
 	 }else if(type_order==='Check Status'){
@@ -59,7 +59,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-	if(item_order){
+	if(item_order!=[]){
 			 if(item_order==='Pen'){
 	  speech="We have blue and black pens with us which one would you like to place order for?"
 	}else if(item_order=='Paper'){
