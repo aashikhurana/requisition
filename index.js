@@ -32,7 +32,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("context parameters"+JSON.stringify(req.body.result.contexts[0].parameters));
     var type_order=req.body.result.contexts[0].parameters.selection_type.original;
 	console.log(type_order);
-	var item_order=req.body.result.contexts.parameters.Items.original;
+	var item_order=req.body.result.contexts[0].parameters.Items.original;
 	console.log(item_order);
 	var pen_color=req.body.result.parameters.Pen_color;
 	console.log(pen_color);
@@ -60,7 +60,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}
 	}
 	 
-	if(item_order!=[]){
+	if(item_order){
 			 if(item_order==='Pen'){
 	  speech="We have blue and black pens with us which one would you like to place order for?"
 	}else if(item_order=='Paper'){
