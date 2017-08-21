@@ -30,9 +30,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(JSON.stringify(req.body.result));
 	var action=req.body.result.action;
 	console.log("context parameters"+JSON.stringify(req.body.result.contexts[0].parameters));
-    var type_order=req.body.result.contexts[0].parameters.selection_type.original;
+    var type_order=req.body.result.parameters.selection_type[0];
 	console.log(type_order);
-	var item_order=req.body.result.contexts[0].parameters.Items.original;
+	var item_order=req.body.result.parameters.Items[0];
 	console.log(item_order);
 	var pen_color=req.body.result.parameters.Pen_color;
 	console.log(pen_color);
