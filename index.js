@@ -112,7 +112,18 @@ if(pap_conf){
 		speech="Sorry please select from Yes or No";
 	}
 }
+	}
 	
+	
+if(action==='check_status'){
+	
+	if(type_order){
+ if(type_order==='Check Status'){
+	 speech="Please enter your Order ID";
+	}
+	}else{
+	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue?";
+	}
 
 if(order_id){
 
@@ -136,15 +147,13 @@ if(order_id==='5075'){
 }else if(order_id==='1229')
 {
 	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
-}else{
-	 speech="Sorry! your order with id "+order_id+" doesnot exist in our records.Please contact our customer care at 1800-255-233 for further queries. Is there something else i can help you with?";
-	
 }
 }
 
+}
 	
 
-	}
+	
 	
 
 	
