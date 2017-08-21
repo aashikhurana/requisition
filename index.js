@@ -68,7 +68,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}else if(item_order==='notebook'){
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
-	  speech="Your order with id 5075 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+	  speech="Your order with id 5075 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}else{
 		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
 	}
@@ -78,9 +78,9 @@ restService.post('/echo', json_body_parser, function(req, res) {
 if(pen_color){
 	
 	if(pen_color==='black'){
-	  speech="Your order with id 7865 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+	  speech="Your order with id 7865 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}else if(pen_color==='blue'){
-	  speech="Your order with id 91123 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+	  speech="Your order with id 91123 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}
 	else{
 	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to continue?";
@@ -92,9 +92,9 @@ if(notebooktype){
 	console.log("inside notebook type");
 	
 	if(notebooktype==='hardbound'){
-	speech="Your order with id 5421 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+	speech="Your order with id 5421 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}else if(notebooktype==='Spiral'){
-	speech="Your order with id 7114 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+	speech="Your order with id 7114 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}
 	else{
 	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to continue?";
@@ -105,9 +105,9 @@ if(notebooktype){
 if(pap_conf){
 	
 	if(pap_conf==='A4'){
-		speech="Your order with id 8954 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+		speech="Your order with id 8954 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}else if(pap_conf==='A3'){
-		speech="Your order with id 1229 has been confirmed and will be delivered to you by "+datetime.getDay()+" "+datetime.getDate()+"Is there anything else I can help you with?";
+		speech="Your order with id 1229 has been confirmed and will be delivered to you by "+datetime.getDate()+" "+datetime.getMonth()+" "+datetime.getYear+" Is there anything else I can help you with?";
 	}else{
 		speech="Sorry please select from Yes or No";
 	}
