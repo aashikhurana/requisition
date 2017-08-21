@@ -45,7 +45,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(exit_contx);
 	var speech="There was some error with the bot. would you still like to proceed?";
 	var datetime = addDays(new Date(), 7);
-	console.log("Today's date:"+datetime);
+	console.log("Today's date:"+datetime.getDate +" "+datetime.getDay);
 	
 	if(action==='new_order'){
 	if(type_order){
