@@ -117,28 +117,28 @@ if(pap_conf){
 if(order_id){
 
 if(order_id==='5075'){
-	speech="Your order for a Stapler has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for a Stapler has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='7865')
 {
-	speech="Your order for a black pens has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for a black pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='91123')
 {
-	speech="Your order for a blue pens has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for a blue pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='5421')
 {
-	speech="Your order for a hardbound notebooks has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for a hardbound notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='7114')
 {
-	speech="Your order for a Spiral notebooks has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for a Spiral notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='8954')
 {
-	speech="Your order for pack of  A4 Size papers has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for pack of  A4 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }else if(order_id==='1229')
 {
-	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by" +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getYear()+ " Is there something else I can help you with?";
+	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }
 else{
-	 speech="Sorry! your order with id"+order_id+" doesnot exist in our records.Please contact our customer care at 1800-255-233 for further queries. Is there something else i can help you with?";
+	 speech="Sorry! your order with id "+order_id+" doesnot exist in our records.Please contact our customer care at 1800-255-233 for further queries. Is there something else i can help you with?";
 	
 }}
 	
