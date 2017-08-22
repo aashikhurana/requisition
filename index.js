@@ -34,7 +34,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	//console.log(type_order);
 	var new_order=req.body.result.parameters.New_order;
 	console. log("order type: "+new_order);
-	var status=req.body.result.parameters.Check_Status;
+	var status=req.body.result.parameters.Check_Status.;
 	console.log("status :"+ status);
 	var item_order=req.body.result.parameters.Items;
 	console.log(item_order);
@@ -149,6 +149,8 @@ if(order_id==='5075'){
 }else if(order_id==='1229')
 {
 	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+}else{
+	speech="Sorry! your order with id " +order_id+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
 }
 }
 
