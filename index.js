@@ -30,9 +30,13 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log(JSON.stringify(req.body.result));
 	var action=req.body.result.action;
 	console.log("context parameters"+JSON.stringify(req.body.result.contexts[0].parameters));
-    var type_order=req.body.result.parameters.selection_type[0];
-	console.log(type_order);
-	var item_order=req.body.result.parameters.Items[0];
+    //var type_order=req.body.result.parameters.selection_type;
+	//console.log(type_order);
+	var new_order=req.body.result.parameters.New_order;
+	console. log("order type: "+new_order);
+	var status=req.body.result.parameters.Check_Status;
+	console.log("status :"+ status);
+	var item_order=req.body.result.parameters.Items;
 	console.log(item_order);
 	var pen_color=req.body.result.parameters.Pen_color;
 	console.log(pen_color);
@@ -48,14 +52,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	console.log("Today's date:"+datetime.getDay()+" "+datetime.getDate());
 	
 	if(action==='new_order'){
-	if(type_order){
+	if(new_order){
 		console.log("inside type order");
-	if(type_order==='New order'){
+	if(new_order==='Order'){
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
-	 }else if(type_order==='Check Status'){
-	 speech="Please enter your Order ID";
-	}else{
+	 }else{
 	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue?";
 	}
 	}
@@ -117,8 +119,8 @@ if(pap_conf){
 	
 if(action==='check_status'){
 	
-	if(type_order){
- if(type_order==='Check Status'){
+	if(status){
+ if(status==='Status'){
 	 speech="Please enter your Order ID";
 	}
 	}else{
