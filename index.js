@@ -46,7 +46,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	var exit_contx=req.body.result.parameters.exit_context;
 	console.log(exit_contx);
 	var order_id=req.body.result.parameters.OrderId;
-	console.log(exit_contx);
+	console.log("Order ID:"+order_id);
 	var speech="There was some error with the bot. would you still like to proceed?";
 	var datetime = addDays(new Date(), 7);
 	console.log("Today's date:"+datetime.getDay()+" "+datetime.getDate());
@@ -149,9 +149,9 @@ if(order_id==='5075'){
 }else if(order_id==='1229')
 {
 	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+}
 }else{
 	speech="Sorry! your order with id " +order_id+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
-}
 }
 
 }
