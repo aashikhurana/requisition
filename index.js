@@ -71,11 +71,15 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
 	  speech="Your order with id 5075 has been has been created. Is there anything else I can help you with?";
-	}else{
+	}else if(isNaN(item_order)){
 		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
+	}else{
+	speech="Sorry! your order with id " +order_id+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
+}
+		
 	}
 	
-	}
+	
 	 
 if(pen_color){
 	
@@ -115,6 +119,7 @@ if(pap_conf){
 	}
 }
 	}
+}
 	
 	
 if(action==='check_status'){
@@ -150,8 +155,6 @@ if(order_id==='5075'){
 {
 	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
 }
-}else{
-	speech="Sorry! your order with id " +order_id+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
 }
 
 }
