@@ -119,7 +119,7 @@ if(pap_conf){
 	}
 }
 	}
-}
+
 	
 	
 if(action==='check_status'){
