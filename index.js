@@ -34,7 +34,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	//console.log(type_order);
 	var new_order=req.body.result.parameters.New_order;
 	console. log("order type: "+new_order);
-	var status=req.body.result.parameters.Check_Status.;
+	var status=req.body.result.parameters.Check_Status;
 	console.log("status :"+ status);
 	var item_order=req.body.result.parameters.Items;
 	console.log(item_order);
