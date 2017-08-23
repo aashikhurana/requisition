@@ -74,7 +74,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}else if(isNaN(item_order)){
 		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
 	}else{
-	speech="Sorry! your order with id " +order_id+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
+	speech="Sorry! your order with id " +item_order+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
 }
 		
 	}
