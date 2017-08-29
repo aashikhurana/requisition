@@ -58,7 +58,7 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	 speech="Please choose one of the items from Pen,Paper,Stapler,Notebook";
 	 
 	 }else{
-	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue?";
+	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue(please respond in Yes or No)?";
 	}
 	}
 	 
@@ -70,11 +70,11 @@ restService.post('/echo', json_body_parser, function(req, res) {
 	}else if(item_order==='notebook'){
 	  speech="We have hardbound and Spiral notebook which one would you like to place order for?";
 	}else if(item_order==='Stapler'){
-	  speech="Your order with id 5075 has been has been created. Is there anything else I can help you with?";
+	  speech="Your order with id 5075 has been has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}else if(isNaN(item_order)){
-		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue?";
+		speech="Input is not valid. Please Choose one of the items from Pen,Paper,Stapler,Notebook. would you like to continue(please respond in Yes or No)?";
 	}else{
-	speech="Sorry! your order with id " +item_order+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?";
+	speech="Sorry! your order with id " +item_order+" doesnot exist in our records. Please contact our customer care  1800-255-253. Is there anything else I can help you with?(please respond in Yes or No)";
 }
 		
 	}
@@ -84,12 +84,12 @@ restService.post('/echo', json_body_parser, function(req, res) {
 if(pen_color){
 	
 	if(pen_color==='black'){
-	  speech="Your order with id 7865 has been created. Is there anything else I can help you with?";
+	  speech="Your order with id 7865 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}else if(pen_color==='blue'){
-	  speech="Your order with id 91123 has been created. Is there anything else I can help you with?";
+	  speech="Your order with id 91123 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}
 	else{
-	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to continue?";
+	  speech="Sorry order for "+pen_color +" pen could not be placed as currently it is not available. Would you like to continue(please respond in Yes or No)?";
 	}
 }
 
@@ -98,12 +98,12 @@ if(notebooktype){
 	console.log("inside notebook type");
 	
 	if(notebooktype==='hardbound'){
-	speech="Your order with id 5421 has been created. Is there anything else I can help you with?";
+	speech="Your order with id 5421 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}else if(notebooktype==='Spiral'){
-	speech="Your order with id 7114 has been created. Is there anything else I can help you with?";
+	speech="Your order with id 7114 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}
 	else{
-	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to continue?";
+	 speech="Sorry order for "+notebooktype +" notebook could not be placed as currently it is not available. Would you like to continue(please respond in Yes or No)?";
 	}
 	
 }
@@ -111,9 +111,9 @@ if(notebooktype){
 if(pap_conf){
 	
 	if(pap_conf==='A4'){
-		speech="Your order with id 8954 has been created. Is there anything else I can help you with?";
+		speech="Your order with id 8954 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}else if(pap_conf==='A3'){
-		speech="Your order with id 1229 has been created. Is there anything else I can help you with?";
+		speech="Your order with id 1229 has been created. Is there anything else I can help you with(please respond in Yes or No)?";
 	}else{
 		speech="Sorry please select from Yes or No";
 	}
@@ -129,31 +129,31 @@ if(action==='check_status'){
 	 speech="Please enter your Order ID";
 	}
 	}else{
-	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue?";
+	   speech="Input is not valid. Please select from place a new order or Check Status. would you like to continue(please respond in Yes or No)";
 	}
 
 if(order_id){
 
 if(order_id==='5075'){
-	speech="Your order for a Stapler has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for a Stapler has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='7865')
 {
-	speech="Your order for a black pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for a black pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='91123')
 {
-	speech="Your order for a blue pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for a blue pens has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='5421')
 {
-	speech="Your order for a hardbound notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for a hardbound notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='7114')
 {
-	speech="Your order for a Spiral notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for a Spiral notebooks has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='8954')
 {
-	speech="Your order for pack of  A4 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for pack of  A4 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }else if(order_id==='1229')
 {
-	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with?";
+	speech="Your order for pack of  A3 Size papers has been dispatched and will get delivered to you by " +datetime.getDate()+"-"+datetime.getMonth()+"-"+datetime.getFullYear()+ " Is there something else I can help you with(please respond in Yes or No)?";
 }
 }
 
